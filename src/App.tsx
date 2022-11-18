@@ -1,10 +1,14 @@
 import React from 'react';
-import './App.css';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import { Main } from './components/Main/Main';
 
-export const  App = () => {
+export const App: React.FC = () => {
   return (
     <div>
-      <h1>Start</h1>
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }
