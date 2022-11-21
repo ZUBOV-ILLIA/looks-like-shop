@@ -27,7 +27,7 @@ const basketSlice = createSlice({
               ...item,
             }
           }
-  
+
           return item;
         })
       } else {
@@ -35,10 +35,22 @@ const basketSlice = createSlice({
       }
     },
     removeBasketItem: (state, action) => {
+      state.basket = state.basket.map(item => {
+        if (item.id === action.payload.id) {
+          item.quantity -= 1;
+
+          return item;
+        }
+
+        return item;
+      })
+
+    },
+    deleteBasketItem: (state, action) => {
       state.basket = state.basket.filter((item: BasketItem) => item.id !== action.payload.id);
     }
   }
 });
 
-export const { addBasketItem, removeBasketItem } = basketSlice.actions;
+export const { addBasketItem, removeBasketItem, deleteBasketItem } = basketSlice.actions;
 export default basketSlice.reducer;

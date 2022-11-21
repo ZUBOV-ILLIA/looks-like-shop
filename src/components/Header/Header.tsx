@@ -1,4 +1,4 @@
-import { AppBar, Badge, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Badge, Button, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './Header.scss';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
@@ -8,17 +8,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { setCategories } from '../../redux/slices/categoriesSlice';
 import { BackdropFilter } from '../BackdropFilter/BackdropFilter';
+import { Cart } from '../Cart/Cart';
+
+const body = document.body;
 
 export const Header: React.FC = () => {
   const [categoriesVisible, setCategoriesVisible] = useState(false);
   const dispatch = useDispatch();
   const categories = useSelector((state: RootState) => state.categories.categories);
   const basket = useSelector((state: RootState) => state.basket.basket);
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   console.log(basket);
 
+  const liftingDrawerIsOpen = (arg: boolean) => {
+    setDrawerIsOpen(arg);
+  }
+
   const liftingCategoriesVisible = (arg: boolean) => {
     setCategoriesVisible(arg);
+
+    if (arg) {
+      body.classList.add('scroll-off');
+    } else {
+      body.classList.remove('scroll-off');
+    }
   }
 
   const getCategories = async () => {
@@ -81,7 +95,8 @@ export const Header: React.FC = () => {
             </Link>
 
             <Button
-              onClick={() => setCategoriesVisible(!categoriesVisible)}
+              className="header__nav-item"
+              onClick={() => liftingCategoriesVisible(true)}
               sx={{
                 color: "white",
               }}
@@ -95,6 +110,7 @@ export const Header: React.FC = () => {
               sx={{
                 boxShadow: "0 0 15px #d528f4"
               }}
+              onClick={() => setDrawerIsOpen(true)}
             >
               <Badge badgeContent={basket.length} color="primary">
                 <ShoppingCartTwoToneIcon
@@ -130,6 +146,8 @@ export const Header: React.FC = () => {
           ))
         )}
       </Routes>
+
+      <Cart liftingDrawerIsOpen={liftingDrawerIsOpen} drawerIsOpen={drawerIsOpen} />
     </header>
   )
 }
