@@ -5,9 +5,12 @@ import './Search.scss';
 export const Search: React.FC = () => {
   return (
     <TextField
+      fullWidth
+      color="secondary"
+      className="search"
       id="outlined-basic"
       label="Search"
-      variant="outlined"
+      variant="standard"
       size="small"
     />
   )

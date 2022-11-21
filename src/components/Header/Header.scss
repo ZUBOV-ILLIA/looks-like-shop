@@ -1,3 +1,36 @@
 .header {
   margin-top: 50px;
+
+  &__nav {
+    height: 0;
+    padding: 0;
+    margin-top: 10px;
+    position: absolute;
+    left: 0;
+    top: 130px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px #808080;
+    z-index: 100;
+    overflow: hidden;
+    transition: 0.3s linear;
+    
+    &--active {
+      padding: 20px;
+      height: 250px;
+    }
+  }
+
+  &__nav-item {
+    color: #808080;
+    text-decoration: none;
+
+    &:visited {
+      color: #808080;
+    }
+  }
 }

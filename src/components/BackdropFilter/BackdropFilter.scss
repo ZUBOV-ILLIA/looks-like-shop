@@ -1,0 +1,10 @@
+.backdrop-filter {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  background-color: rgba(125, 96, 152, 0.797);
+  backdrop-filter: blur(10px);
+  z-index: 90;
+}
