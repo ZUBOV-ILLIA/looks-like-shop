@@ -1,8 +1,12 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
-import React, { useState } from 'react'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import React from 'react';
 
-export const SortBy: React.FC = () => {
-  const [sortBy, setSortBy] = useState("by rating");
+interface SortByProps {
+  sortBy: string,
+  liftingSortBy: (arg: string) => void,
+}
+
+export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
 
   return (
     <>
@@ -11,12 +15,12 @@ export const SortBy: React.FC = () => {
           width: '210px'
         }}
       >
-        <InputLabel>Show</InputLabel>
+        <InputLabel>Sort By</InputLabel>
         <Select
           value={sortBy}
           defaultValue={'by rating'}
-          label="Show"
-          onChange={(e) => setSortBy(e.target.value)}
+          label="Sort By"
+          onChange={(e) => liftingSortBy(e.target.value)}
           color="secondary"
 
           displayEmpty
@@ -25,8 +29,8 @@ export const SortBy: React.FC = () => {
           <MenuItem value="by rating">by rating</MenuItem>
           <MenuItem value="lowest to highest price">lowest to highest price</MenuItem>
           <MenuItem value="highest to lowest price">highest to lowest price</MenuItem>
-          <MenuItem value="by reviews">by reviews</MenuItem>
-          <MenuItem value="by date of addition">by date of addition</MenuItem>
+          <MenuItem value="alphabet">alphabet</MenuItem>
+          <MenuItem value="alphabet backwards">alphabet backwards</MenuItem>
         </Select>
       </FormControl>
     </>

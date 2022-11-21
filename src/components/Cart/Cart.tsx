@@ -89,7 +89,8 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
                                 value={product.rating}
                                 precision={0.25}
                                 size="small"
-                                readOnly />
+                                readOnly
+                              />
                             </CardContent>
                           </Card>
                         </TableCell>

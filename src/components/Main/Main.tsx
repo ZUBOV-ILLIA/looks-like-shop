@@ -13,17 +13,56 @@ import { RootState } from '../../redux/store/store';
 import { ItemsPerPageSelector } from '../ItemsPerPageSelector/ItemsPerPageSelector';
 import { SortBy } from '../SortBy/SortBy';
 
+const sorting = (arg: Product[], sorting: string, fn: any) => {
+  fn([...arg].sort((a, b) => {
+    switch (sorting) {
+      case 'by rating': {
+        return b.rating - a.rating;
+      }
+      case 'lowest to highest price': {
+        return a.price - b.price;
+      }
+      case 'highest to lowest price': {
+        return b.price - a.price;
+      }
+      case 'alphabet': {
+        return a.title.localeCompare(b.title);
+      }
+      case 'alphabet backwards': {
+        return b.title.localeCompare(a.title);
+      }
+
+      default: {
+        return 0;
+      }
+    }
+  }))
+}
+
 export const Main: React.FC = () => {
-  const products = useSelector((state: RootState) => state.products.products);
+  const productsFromRedux = useSelector((state: RootState) => state.products.products);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [productsToRender, setProductsToRender] = useState([]);
+  const [pages, setPages] = useState(1);
+  const [page, setPage] = useState(1);
+  const [sortBy, setSortBy] = useState('');
   const dispatch = useDispatch();
+
+
+  const liftingSortBy = (arg: string) => {
+    setSortBy(arg);
+  }
+
+  const liftingItemsPerPage = (arg: number) => {
+    setItemsPerPage(arg);
+  }
 
   const getProducts = async () => {
     try {
-      const res: PromiseProducts = await getProductsFromAPI('');
-
-      console.log(res)
+      const res: PromiseProducts = await getProductsFromAPI(`?limit=${itemsPerPage}&skip=${(page - 1) * itemsPerPage}`);
 
       setProducts(res.products);
+      setPages(Math.ceil(res.total / itemsPerPage))
       dispatch(setProducts(res.products));
     } catch (error) {
       throw new Error(`${error}`);
@@ -32,7 +71,12 @@ export const Main: React.FC = () => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [itemsPerPage, page]);
+
+
+  useEffect(() => {
+    sorting(productsFromRedux, sortBy, setProductsToRender);
+  }, [sortBy, itemsPerPage, page, productsFromRedux]);
 
   return (
     <main className="main">
@@ -50,11 +94,16 @@ export const Main: React.FC = () => {
             justifyContent: 'space-between',
             alignItems: 'center'
           }}>
-          <SortBy />
+          <SortBy sortBy={sortBy} liftingSortBy={liftingSortBy} />
 
-          <Pagination count={5} color="secondary" />
+          <Pagination
+            color="secondary"
+            count={pages}
+            page={page}
+            onChange={(_, num) => setPage(num)}
+          />
 
-          <ItemsPerPageSelector />
+          <ItemsPerPageSelector itemsPerPage={itemsPerPage} liftingItemsPerPage={liftingItemsPerPage} />
         </Box>
 
         <Box
@@ -67,7 +116,7 @@ export const Main: React.FC = () => {
             justifyContent: "space-between"
           }}
         >
-          {products.map((product: Product) => (
+          {productsToRender.map((product: Product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </Box>

@@ -57,6 +57,7 @@ export const Header: React.FC = () => {
         color="secondary"
         sx={{
           width: "100% !important",
+          minWidth: '778px',
         }}
       >
         <div className="container">

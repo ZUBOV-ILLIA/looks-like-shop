@@ -1,7 +1,7 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Rating, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addBasketItem, removeBasketItem } from '../../redux/slices/basketSlice';
+import { addBasketItem } from '../../redux/slices/basketSlice';
 import { Product } from '../../types/products';
 import './ProductCard.scss';
 
@@ -36,6 +36,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           />
 
           <CardContent>
+            <Rating
+              name="read-only"
+              value={product.rating}
+              precision={0.25}
+              size="small"
+              readOnly
+            />
             <Typography textAlign="left" variant="h6" component="h5">{product.title}</Typography>
             <Typography variant="body1">{`Price - ${product.price}$`}</Typography>
             <Typography variant="subtitle2">{product.description}</Typography>

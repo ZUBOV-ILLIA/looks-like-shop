@@ -1,8 +1,12 @@
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material'
-import React, { useState } from 'react'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import React from 'react';
 
-export const ItemsPerPageSelector: React.FC = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(16);
+interface ItemsPerPageSelectorProps {
+  itemsPerPage: number,
+  liftingItemsPerPage: (arg: number) => void,
+}
+
+export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ itemsPerPage, liftingItemsPerPage}) => {
 
   return (
     <>
@@ -14,14 +18,15 @@ export const ItemsPerPageSelector: React.FC = () => {
         <InputLabel>Per Page</InputLabel>
         <Select
           value={itemsPerPage}
-          defaultValue={12}
           label="Per Page"
-          onChange={(e) => setItemsPerPage(+e.target.value)}
+          onChange={(e) => liftingItemsPerPage(+e.target.value)}
           color="secondary"
 
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
         >
+          <MenuItem value={4}>4</MenuItem>
+          <MenuItem value={8}>8</MenuItem>
           <MenuItem value={12}>12</MenuItem>
           <MenuItem value={16}>16</MenuItem>
           <MenuItem value={20}>20</MenuItem>
@@ -32,4 +37,4 @@ export const ItemsPerPageSelector: React.FC = () => {
       </FormControl>
     </>
   )
-}
+};
