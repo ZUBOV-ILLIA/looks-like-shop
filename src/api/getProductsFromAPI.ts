@@ -1,3 +1,3 @@
 import { getFromAPI } from './getFromAPI';
 
-export const getProductsFromAPI = getFromAPI('products');
+export const getProductsFromAPI = (arg: string) => getFromAPI(`products${arg}`);

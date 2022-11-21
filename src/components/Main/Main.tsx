@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './Main.scss';
 // import products from '../../api/products.json';
@@ -10,6 +10,8 @@ import { PromiseProducts } from '../../react-app-env';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts } from '../../redux/slices/productsSlice';
 import { RootState } from '../../redux/store/store';
+import { ItemsPerPageSelector } from '../ItemsPerPageSelector/ItemsPerPageSelector';
+import { SortBy } from '../SortBy/SortBy';
 
 export const Main: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.products);
@@ -17,7 +19,9 @@ export const Main: React.FC = () => {
 
   const getProducts = async () => {
     try {
-      const res: PromiseProducts = await getProductsFromAPI;
+      const res: PromiseProducts = await getProductsFromAPI('');
+
+      console.log(res)
 
       setProducts(res.products);
       dispatch(setProducts(res.products));
@@ -34,11 +38,24 @@ export const Main: React.FC = () => {
     <main className="main">
       <div className="container"
         style={{
-          marginTop: "10px",
+          marginTop: "20px",
         }}
       >
-
         <Search />
+
+        <Box
+          sx={{
+            marginTop: '20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+          <SortBy />
+
+          <Pagination count={5} color="secondary" />
+
+          <ItemsPerPageSelector />
+        </Box>
 
         <Box
           sx={{

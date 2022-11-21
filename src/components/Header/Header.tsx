@@ -1,4 +1,4 @@
-import { AppBar, Badge, Button, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Badge, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './Header.scss';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
@@ -18,8 +18,6 @@ export const Header: React.FC = () => {
   const categories = useSelector((state: RootState) => state.categories.categories);
   const basket = useSelector((state: RootState) => state.basket.basket);
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-
-  console.log(basket);
 
   const liftingDrawerIsOpen = (arg: boolean) => {
     setDrawerIsOpen(arg);
@@ -57,6 +55,9 @@ export const Header: React.FC = () => {
       <AppBar
         position="static"
         color="secondary"
+        sx={{
+          width: "100% !important",
+        }}
       >
         <div className="container">
           <Toolbar
@@ -77,7 +78,7 @@ export const Header: React.FC = () => {
                 component="span"
                 sx={{
                   fontFamily: "'Rubik Mono One', sans-serif",
-                  fontSize: "45px",
+                  fontSize: "2rem",
                   textShadow: "9px 7px 16px #ff02a8, -6px -3px 16px #ff6000",
                   WebkitTextStroke: "2px #ff9200",
                   WebkitTextFillColor: "transparent",
