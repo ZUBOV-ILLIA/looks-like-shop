@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { SingleProduct } from './components/SingleProduct/SingleProduct';
 import { categories } from './Routes/categories';
 
 export const App: React.FC = () => {
@@ -9,6 +10,7 @@ export const App: React.FC = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />} />
+        <Route path="products/:params" element={<SingleProduct />} />
 
         {!!categories.length && (
           categories.map((el: string) => (
