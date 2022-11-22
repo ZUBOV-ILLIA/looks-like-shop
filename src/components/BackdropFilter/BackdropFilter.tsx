@@ -6,8 +6,6 @@ interface BackdropFilterProps {
 }
 
 export const BackdropFilter: React.FC<BackdropFilterProps> = ({ liftState }) => {
-
-  console.log(liftState)
   return (
     <div className='backdrop-filter' onClick={() => liftState(false)}></div>
   )

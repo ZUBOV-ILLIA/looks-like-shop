@@ -13,6 +13,7 @@ import { RootState } from '../../redux/store/store';
 import { ItemsPerPageSelector } from '../ItemsPerPageSelector/ItemsPerPageSelector';
 import { SortBy } from '../SortBy/SortBy';
 import { sorting } from '../../utils/sorting';
+import { useLocation } from 'react-router-dom';
 
 export const Main: React.FC = () => {
   const productsFromRedux = useSelector((state: RootState) => state.products.products);
@@ -23,9 +24,14 @@ export const Main: React.FC = () => {
   const [sortBy, setSortBy] = useState('');
   const dispatch = useDispatch();
 
+  const location = useLocation();
 
   const liftingSortBy = (arg: string) => {
     setSortBy(arg);
+  }
+
+  const liftingPage = () => {
+    setPage(1);
   }
 
   const liftingItemsPerPage = (arg: number) => {
@@ -33,8 +39,14 @@ export const Main: React.FC = () => {
   }
 
   const getProducts = async () => {
+    let queryLocation = '';
+
+    if (location.pathname !== '/') {
+      queryLocation = '/category' + location.pathname;
+    }
+
     try {
-      const res: PromiseProducts = await getProductsFromAPI(`?limit=${itemsPerPage}&skip=${(page - 1) * itemsPerPage}`);
+      const res: PromiseProducts = await getProductsFromAPI(`${queryLocation}?limit=${itemsPerPage}&skip=${(page - 1) * itemsPerPage}`);
 
       setProducts(res.products);
       setPages(Math.ceil(res.total / itemsPerPage))
@@ -46,7 +58,7 @@ export const Main: React.FC = () => {
 
   useEffect(() => {
     getProducts();
-  }, [itemsPerPage, page]);
+  }, [itemsPerPage, page, location.pathname]);
 
 
   useEffect(() => {
@@ -78,7 +90,7 @@ export const Main: React.FC = () => {
             onChange={(_, num) => setPage(num)}
           />
 
-          <ItemsPerPageSelector itemsPerPage={itemsPerPage} liftingItemsPerPage={liftingItemsPerPage} />
+          <ItemsPerPageSelector itemsPerPage={itemsPerPage} liftingItemsPerPage={liftingItemsPerPage} liftingPage={liftingPage} />
         </Box>
 
         <Box

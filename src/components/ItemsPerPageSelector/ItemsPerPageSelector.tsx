@@ -4,9 +4,10 @@ import React from 'react';
 interface ItemsPerPageSelectorProps {
   itemsPerPage: number,
   liftingItemsPerPage: (arg: number) => void,
+  liftingPage: () => void,
 }
 
-export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ itemsPerPage, liftingItemsPerPage}) => {
+export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ itemsPerPage, liftingItemsPerPage, liftingPage }) => {
 
   return (
     <>
@@ -19,7 +20,10 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ item
         <Select
           value={itemsPerPage}
           label="Per Page"
-          onChange={(e) => liftingItemsPerPage(+e.target.value)}
+          onChange={(e) => {
+            liftingItemsPerPage(+e.target.value)
+            liftingPage();
+          }}
           color="secondary"
 
           displayEmpty

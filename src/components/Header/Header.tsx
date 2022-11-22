@@ -1,21 +1,18 @@
 import { AppBar, Badge, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
-import { Link, Route, Routes } from 'react-router-dom';
-import { getCategoriesFromAPI } from '../../api/getCategoriesFromAPI';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
-import { setCategories } from '../../redux/slices/categoriesSlice';
 import { BackdropFilter } from '../BackdropFilter/BackdropFilter';
 import { Cart } from '../Cart/Cart';
+import { categories } from '../../Routes/categories';
 
 const body = document.body;
 
 export const Header: React.FC = () => {
   const [categoriesVisible, setCategoriesVisible] = useState(false);
-  const dispatch = useDispatch();
-  const categories = useSelector((state: RootState) => state.categories.categories);
   const basket = useSelector((state: RootState) => state.basket.basket);
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
@@ -32,21 +29,6 @@ export const Header: React.FC = () => {
       body.classList.remove('scroll-off');
     }
   }
-
-  const getCategories = async () => {
-    try {
-      const res: string[] = await getCategoriesFromAPI;
-
-      setCategories(res);
-      dispatch(setCategories(res));
-    } catch (error) {
-      throw new Error(`${error}`);
-    }
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, [])
 
   return (
     <header className="header">
@@ -131,23 +113,31 @@ export const Header: React.FC = () => {
               <Link
                 key={el}
                 className="header__nav-item"
-                to={el}
-                onClick={() => setCategoriesVisible(false)}
+                to={`/${el}`}
+                onClick={() => {
+                  liftingCategoriesVisible(false);
+                }}
               >
                 {el.toUpperCase()}
               </Link>
             ))
           )}
+          <Link
+            className="header__nav-item"
+            to="/"
+            onClick={() => {
+              liftingCategoriesVisible(false);
+            }}
+            style={{
+              color: '#000',
+              fontWeight: 700,
+            }}
+
+          >
+            {'all categories'.toUpperCase()}
+          </Link>
         </nav>
       </div>
-
-      {/* <Routes>
-        {!!categories.length && (
-          categories.map((el: string) => (
-            <Route key={el} path={el} element={<h2>{el.toUpperCase()}</h2>} />
-          ))
-        )}
-      </Routes> */}
 
       <Cart liftingDrawerIsOpen={liftingDrawerIsOpen} drawerIsOpen={drawerIsOpen} />
     </header>
