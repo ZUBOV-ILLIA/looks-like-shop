@@ -141,13 +141,13 @@ export const Header: React.FC = () => {
         </nav>
       </div>
 
-      <Routes>
+      {/* <Routes>
         {!!categories.length && (
           categories.map((el: string) => (
             <Route key={el} path={el} element={<h2>{el.toUpperCase()}</h2>} />
           ))
         )}
-      </Routes>
+      </Routes> */}
 
       <Cart liftingDrawerIsOpen={liftingDrawerIsOpen} drawerIsOpen={drawerIsOpen} />
     </header>

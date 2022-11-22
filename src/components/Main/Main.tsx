@@ -12,32 +12,7 @@ import { setProducts } from '../../redux/slices/productsSlice';
 import { RootState } from '../../redux/store/store';
 import { ItemsPerPageSelector } from '../ItemsPerPageSelector/ItemsPerPageSelector';
 import { SortBy } from '../SortBy/SortBy';
-
-const sorting = (arg: Product[], sorting: string, fn: any) => {
-  fn([...arg].sort((a, b) => {
-    switch (sorting) {
-      case 'by rating': {
-        return b.rating - a.rating;
-      }
-      case 'lowest to highest price': {
-        return a.price - b.price;
-      }
-      case 'highest to lowest price': {
-        return b.price - a.price;
-      }
-      case 'alphabet': {
-        return a.title.localeCompare(b.title);
-      }
-      case 'alphabet backwards': {
-        return b.title.localeCompare(a.title);
-      }
-
-      default: {
-        return 0;
-      }
-    }
-  }))
-}
+import { sorting } from '../../utils/sorting';
 
 export const Main: React.FC = () => {
   const productsFromRedux = useSelector((state: RootState) => state.products.products);
@@ -82,7 +57,7 @@ export const Main: React.FC = () => {
     <main className="main">
       <div className="container"
         style={{
-          marginTop: "20px",
+          margin: "20px auto",
         }}
       >
         <Search />
