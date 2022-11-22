@@ -34,5 +34,5 @@ export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
         </Select>
       </FormControl>
     </>
-  )
-}
+  );
+};

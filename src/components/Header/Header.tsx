@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
 
   const liftingDrawerIsOpen = (arg: boolean) => {
     setDrawerIsOpen(arg);
-  }
+  };
 
   const liftingCategoriesVisible = (arg: boolean) => {
     setCategoriesVisible(arg);
@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
     } else {
       body.classList.remove('scroll-off');
     }
-  }
+  };
 
   return (
     <header className="header">
@@ -141,5 +141,5 @@ export const Header: React.FC = () => {
 
       <Cart liftingDrawerIsOpen={liftingDrawerIsOpen} drawerIsOpen={drawerIsOpen} />
     </header>
-  )
-}
+  );
+};

@@ -61,5 +61,5 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </CardActions>
       </Card>
     </Box>
-  )
-}
+  );
+};

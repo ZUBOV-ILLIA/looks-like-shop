@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const PageNotFound: React.FC = () => {
   return (
@@ -17,5 +17,5 @@ export const PageNotFound: React.FC = () => {
 
       <img src="../images/404/error-404.png" alt="Oops Page Not Found!" style={{ width: '50%' }} />
     </div>
-  )
-}
+  );
+};

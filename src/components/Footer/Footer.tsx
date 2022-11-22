@@ -6,5 +6,5 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       footer
     </footer>
-  )
-}
+  );
+};

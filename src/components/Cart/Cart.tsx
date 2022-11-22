@@ -1,6 +1,23 @@
-import { Button, ButtonGroup, Card, CardContent, CardMedia, Drawer, IconButton, Paper, Rating, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  CardContent,
+  CardMedia,
+  Drawer,
+  IconButton,
+  Paper,
+  Rating,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography
+} from '@mui/material';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { Close, DeleteForeverTwoTone } from '@mui/icons-material';
 import { addBasketItem, deleteBasketItem, removeBasketItem } from '../../redux/slices/basketSlice';
@@ -107,7 +124,12 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
                                 -
                               </Typography>
                             </Button>
-                            <Button sx={{ color: '#000 !important', width: "56px" }} disabled>{product.quantity}</Button>
+                            <Button
+                              sx={{ color: '#000 !important', width: "56px" }}
+                              disabled
+                            >
+                              {product.quantity}
+                            </Button>
                             <Button
                               onClick={() => {
                                 dispatch(addBasketItem(product));
@@ -169,5 +191,5 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
         </div>
       </Drawer>
     </>
-  )
-}
+  );
+};

@@ -23,24 +23,23 @@ export const Main: React.FC = () => {
   const [sortBy, setSortBy] = useState('');
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
-
   const location = useLocation();
 
   const liftingQuery = (arg: string) => {
     setQuery(arg);
-  }
+  };
 
   const liftingSortBy = (arg: string) => {
     setSortBy(arg);
-  }
+  };
 
   const liftingPage = () => {
     setPage(1);
-  }
+  };
 
   const liftingItemsPerPage = (arg: number) => {
     setItemsPerPage(arg);
-  }
+  };
 
   const getProducts = async (arg: string) => {
     let queryLocation = '';
@@ -66,12 +65,12 @@ export const Main: React.FC = () => {
 
 
       setProducts(res.products);
-      setPages(Math.ceil(res.total / itemsPerPage))
+      setPages(Math.ceil(res.total / itemsPerPage));
       dispatch(setProducts(res.products));
     } catch (error) {
       throw new Error(`${error}`);
     }
-  }
+  };
 
   useEffect(() => {
     getProducts('');
@@ -107,7 +106,11 @@ export const Main: React.FC = () => {
             onChange={(_, num) => setPage(num)}
           />
 
-          <ItemsPerPageSelector itemsPerPage={itemsPerPage} liftingItemsPerPage={liftingItemsPerPage} liftingPage={liftingPage} />
+          <ItemsPerPageSelector
+            itemsPerPage={itemsPerPage}
+            liftingItemsPerPage={liftingItemsPerPage}
+            liftingPage={liftingPage}
+          />
         </Box>
 
         <Box
@@ -126,5 +129,5 @@ export const Main: React.FC = () => {
         </Box>
       </div>
     </main>
-  )
-}
+  );
+};

@@ -7,7 +7,11 @@ interface ItemsPerPageSelectorProps {
   liftingPage: () => void,
 }
 
-export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ itemsPerPage, liftingItemsPerPage, liftingPage }) => {
+export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
+  itemsPerPage,
+  liftingItemsPerPage,
+  liftingPage
+}) => {
 
   return (
     <>
@@ -21,7 +25,7 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ item
           value={itemsPerPage}
           label="Per Page"
           onChange={(e) => {
-            liftingItemsPerPage(+e.target.value)
+            liftingItemsPerPage(+e.target.value);
             liftingPage();
           }}
           color="secondary"
@@ -40,5 +44,5 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({ item
         </Select>
       </FormControl>
     </>
-  )
+  );
 };

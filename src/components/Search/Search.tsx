@@ -35,11 +35,11 @@ export const Search: React.FC<SearchProps> = ({ query, liftingQuery, getProducts
         color="secondary"
         onClick={() => {
           getProducts(query);
-          liftingQuery('')
+          liftingQuery('');
         }}
       >
         Search
       </Button>
     </Box>
-  )
-}
+  );
+};

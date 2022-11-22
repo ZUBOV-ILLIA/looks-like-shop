@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import { Product } from "../types/products";
 
 export const sorting = (arg: Product[], sorting: string, fn: any) => {
