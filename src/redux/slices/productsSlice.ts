@@ -6,17 +6,17 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  products: [],
+	products: [],
 };
 
 const productsSlice = createSlice({
-  name: 'products',
-  initialState,
-  reducers: {
-    setProducts: (state, action) => {
-      state.products = action.payload;
-    }
-  },
+	name: "products",
+	initialState,
+	reducers: {
+		setProducts: (state, action) => {
+			state.products = action.payload;
+		}
+	},
 });
 
 export const { setProducts } = productsSlice.actions;
