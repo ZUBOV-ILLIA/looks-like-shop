@@ -1,5 +1,8 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/store';
+import { langSetter } from '../../utils/langSetter';
 
 interface SortByProps {
   sortBy: string,
@@ -7,6 +10,7 @@ interface SortByProps {
 }
 
 export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
+  const { lang } = useSelector((state: RootState) => state.lang);
 
   return (
     <>
@@ -15,24 +19,26 @@ export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
           width: '210px'
         }}
       >
-        <InputLabel>Sort By</InputLabel>
+        <InputLabel>{langSetter("sortby")}</InputLabel>
         <Select
           value={sortBy}
           defaultValue={'by rating'}
-          label="Sort By"
+          label={langSetter("sortby")}
           onChange={(e) => liftingSortBy(e.target.value)}
           color="secondary"
 
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          <MenuItem value="by rating">by rating</MenuItem>
-          <MenuItem value="lowest to highest price">lowest to highest price</MenuItem>
-          <MenuItem value="highest to lowest price">highest to lowest price</MenuItem>
-          <MenuItem value="alphabet">alphabet</MenuItem>
-          <MenuItem value="alphabet backwards">alphabet backwards</MenuItem>
+          <MenuItem value="by rating">{langSetter("byrating")}</MenuItem>
+          <MenuItem value="lowest to highest price">{langSetter("lowtohigh")}</MenuItem>
+          <MenuItem value="highest to lowest price">{langSetter("hightolow")}</MenuItem>
+          <MenuItem value="alphabet">{langSetter("alph")}</MenuItem>
+          <MenuItem value="alphabet backwards">{langSetter("alphback")}</MenuItem>
         </Select>
       </FormControl>
+
+      <Box display="none">{lang}</Box>
     </>
   );
 };

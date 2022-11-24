@@ -1,5 +1,8 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/store';
+import { langSetter } from '../../utils/langSetter';
 
 interface ItemsPerPageSelectorProps {
   itemsPerPage: number,
@@ -12,6 +15,7 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
   liftingItemsPerPage,
   liftingPage
 }) => {
+  const { lang } = useSelector((state: RootState) => state.lang);
 
   return (
     <>
@@ -20,10 +24,10 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
           width: '80px'
         }}
       >
-        <InputLabel>Per Page</InputLabel>
+        <InputLabel>{langSetter("perpage")}</InputLabel>
         <Select
           value={itemsPerPage}
-          label="Per Page"
+          label={langSetter("perpage")}
           onChange={(e) => {
             liftingItemsPerPage(+e.target.value);
             liftingPage();
@@ -43,6 +47,7 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
           <MenuItem value={32}>32</MenuItem>
         </Select>
       </FormControl>
+      <Typography sx={{ display: "none" }}>{lang}</Typography>
     </>
   );
 };

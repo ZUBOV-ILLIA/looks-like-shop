@@ -1,8 +1,13 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/store';
+import { langSetter } from '../../utils/langSetter';
 import { SocialLinks } from '../SocialLinks/SocialLinks';
 
 export const Footer: React.FC = () => {
+  const { lang } = useSelector((state: RootState) => state.lang);
+
   return (
     <Box
       sx={{
@@ -24,18 +29,21 @@ export const Footer: React.FC = () => {
 
       <Box sx={{ width: "30%" }}>
         <Typography color="#ff9b07" variant="body1" mb="15px">
-          {`Hello, my name is Ilya, I'm a Frontend developer.
-          This is one of the works in my portfolio.
-          You can contact me using these links: `}
+          {langSetter("footeraboutme")}
         </Typography>
 
         <SocialLinks />
       </Box>
 
       <Typography sx={{ width: "30%" }} color="#ff9b07" variant="body1">
-        {`This website is made using such technologies and means: `}
-        <strong>React, React-Router, Redux Toolkit, Typescript, Material UI, SASS, REST Api and ESLint</strong>.
+        {langSetter("footertechnologys")}
+        <strong>
+          React, React-Router, Redux Toolkit, Typescript, Material UI, SASS, REST Api {langSetter("footerand")} ESLint
+        </strong>.
+        {/* <strong>React, React-Router, Redux Toolkit, Typescript, Material UI, SASS, REST Api and ESLint</strong>. */}
       </Typography>
+
+      <Box display="none">{lang}</Box>
     </Box>
   );
 };

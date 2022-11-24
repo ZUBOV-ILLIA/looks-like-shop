@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { langSetter } from '../../utils/langSetter';
 
 export const PageNotFound: React.FC = () => {
   return (
@@ -15,9 +16,9 @@ export const PageNotFound: React.FC = () => {
       }}
     >
 
-      <h1 style={{ textAlign: 'center' }}>Oops Page Not Found!</h1>
+      <h1 style={{ textAlign: 'center' }}>{langSetter("oops")}</h1>
 
-      <img src="../images/404/error-404.png" alt="Oops Page Not Found!" style={{ width: '50%' }} />
+      <img src="../images/404/error-404.png" alt={langSetter("oops")} style={{ width: '50%' }} />
 
       <Link
         className="header__nav-item"
@@ -28,8 +29,8 @@ export const PageNotFound: React.FC = () => {
         }}
 
       >
-        <Button variant="outlined">
-          {'Back to Home'.toUpperCase()}
+        <Button variant="outlined" sx={{ textTransform: "uppercase" }}>
+          {langSetter("backtohome")}
         </Button>
       </Link>
     </div>

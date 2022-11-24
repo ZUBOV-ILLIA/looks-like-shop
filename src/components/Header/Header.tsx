@@ -8,6 +8,7 @@ import { RootState } from '../../redux/store/store';
 import { BackdropFilter } from '../BackdropFilter/BackdropFilter';
 import { Cart } from '../Cart/Cart';
 import { categories } from '../../Routes/categories';
+import { langSetter } from '../../utils/langSetter';
 
 const body = document.body;
 
@@ -15,6 +16,8 @@ export const Header: React.FC = () => {
   const [categoriesVisible, setCategoriesVisible] = useState(false);
   const basket = useSelector((state: RootState) => state.basket.basket);
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const { lang } = useSelector((state: RootState) => state.lang);
+
 
   const liftingDrawerIsOpen = (arg: boolean) => {
     setDrawerIsOpen(arg);
@@ -85,7 +88,7 @@ export const Header: React.FC = () => {
                 color: "white",
               }}
             >
-              Categories
+              {langSetter("headerCategories")}
             </Button>
 
             <IconButton
@@ -114,11 +117,12 @@ export const Header: React.FC = () => {
                 key={el}
                 className="header__nav-item"
                 to={`/${el}`}
+                style={{ textTransform: "uppercase"}}
                 onClick={() => {
                   liftingCategoriesVisible(false);
                 }}
               >
-                {el.toUpperCase()}
+                {langSetter(el)}
               </Link>
             ))
           )}
@@ -131,13 +135,16 @@ export const Header: React.FC = () => {
             style={{
               color: '#000',
               fontWeight: 700,
+              textTransform: "uppercase"
             }}
 
           >
-            {'all categories'.toUpperCase()}
+            {langSetter("allcategories")}
           </Link>
         </nav>
       </div>
+
+      <Typography sx={{ display: "none" }}>{lang}</Typography>
 
       <Cart liftingDrawerIsOpen={liftingDrawerIsOpen} drawerIsOpen={drawerIsOpen} />
     </header>

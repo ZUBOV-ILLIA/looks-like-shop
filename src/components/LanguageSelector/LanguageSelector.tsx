@@ -1,12 +1,16 @@
 import { FormControl, MenuItem, Select } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLang } from '../../redux/slices/languageSlice';
+import { RootState } from '../../redux/store/store';
 
-export const LanguageSelector = () => {
-  const [lang, setLang] = useState(localStorage.getItem("lang") || 'en');
+export const LanguageSelector: React.FC = () => {
+  const dispatch = useDispatch();
+  const { lang } = useSelector((state: RootState) => state.lang);
 
   const handleChangeLang = (arg: string) => {
-    setLang(arg);
+    dispatch(setLang(arg));
     localStorage.setItem("lang", arg);
   };
 

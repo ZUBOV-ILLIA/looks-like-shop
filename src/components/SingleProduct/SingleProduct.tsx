@@ -12,14 +12,16 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getCommentsFromAPI } from '../../api/getCommentsFromAPI';
 import { getProductsFromAPI } from '../../api/getProductsFromAPI';
 import { PromiseComments } from '../../react-app-env';
 import { addBasketItem } from '../../redux/slices/basketSlice';
+import { RootState } from '../../redux/store/store';
 import { Comment } from '../../types/comments';
 import { Product } from '../../types/products';
+import { langSetter } from '../../utils/langSetter';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
@@ -29,6 +31,7 @@ export const SingleProduct: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState<Comment[] | null>(null);
+  const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
 
   const getCommets = async () => {
@@ -100,9 +103,8 @@ export const SingleProduct: React.FC = () => {
                 </ImageList>
               </Paper>
               <Box sx={{ width: '49%' }}>
-                <Typography variant="h5">{product.title}</Typography>
-                <Typography variant="subtitle2" marginBottom="10px">sailor magazine</Typography>
-                <Box sx={{ display: "flex", gap: "15px" }}>
+                <Typography variant="h5" marginBottom="10px">{product.title}</Typography>
+                <Box sx={{ marginBottom: "10px", display: "flex", gap: "15px" }}>
                   <Rating
                     name="read-only"
                     value={product.rating}
@@ -113,7 +115,9 @@ export const SingleProduct: React.FC = () => {
 
                   {comments && comments.length > 0 && (
                     <Link href="#comments">
-                      <Typography variant="body2">{`show ${comments.length} comments`}</Typography>
+                      <Typography variant="body2">
+                        {langSetter("show")}{comments.length}{langSetter("comments")}
+                      </Typography>
                     </Link>
                   )}
                 </Box>
@@ -122,7 +126,7 @@ export const SingleProduct: React.FC = () => {
 
                 {product.stock < 50 && (
                   <Typography color="#ff0000" variant="caption" >
-                    {`Less than 50 products left in stock`}
+                    {langSetter("lessproducts")}
                   </Typography>
                 )}
 
@@ -130,7 +134,7 @@ export const SingleProduct: React.FC = () => {
 
                 <Box>
                   <Snackbar open={open} autoHideDuration={2000} onClose={() => setOpen(false)}>
-                    <Alert variant="filled" severity="success">{`${product?.title} added to cart`}</Alert>
+                    <Alert variant="filled" severity="success">{`${product?.title} ${langSetter("addedinfo")}`}</Alert>
                   </Snackbar>
 
                   <Button
@@ -142,7 +146,7 @@ export const SingleProduct: React.FC = () => {
                       setOpen(true);
                     }}
                   >
-                    Add to Cart
+                    {langSetter("addtocart")}
                   </Button>
                 </Box>
 
@@ -159,7 +163,7 @@ export const SingleProduct: React.FC = () => {
                   }}
                 >
                   <Typography variant="subtitle1">
-                    {`By using the promo code you will get ${product.discountPercentage} $ off this product`}
+                    {langSetter("discount")}{` ${product.discountPercentage} $`}
                   </Typography>
                 </Paper>
 
@@ -174,7 +178,7 @@ export const SingleProduct: React.FC = () => {
 
             {comments && (
               <Paper elevation={6} sx={{ padding: '30px' }} id="comments">
-                <Typography variant="h5" mb="20px">Comments</Typography>
+                <Typography variant="h5" mb="20px">{langSetter("singlepostcomments")}</Typography>
 
                 {comments.map(comment => (
                   <React.Fragment key={comment.id}>
@@ -207,6 +211,7 @@ export const SingleProduct: React.FC = () => {
       )}
 
       <Footer />
+      <Typography sx={{ display: "none" }}>{lang}</Typography>
     </>
   );
 };

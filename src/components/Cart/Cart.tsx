@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { Close, DeleteForeverTwoTone } from '@mui/icons-material';
 import { addBasketItem, deleteBasketItem, removeBasketItem } from '../../redux/slices/basketSlice';
+import { langSetter } from '../../utils/langSetter';
 
 interface CartProps {
   liftingDrawerIsOpen: (arg: boolean) => void,
@@ -65,9 +66,9 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Product</TableCell>
+                      <TableCell>{langSetter("product")}</TableCell>
                       <TableCell></TableCell>
-                      <TableCell sx={{ textAlign: 'center' }}>Price</TableCell>
+                      <TableCell sx={{ textAlign: 'center' }}>{langSetter("price")}</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
@@ -159,7 +160,7 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
 
                   <TableHead>
                     <TableRow>
-                      <TableCell>Full Price</TableCell>
+                      <TableCell>{langSetter("fullprice")}</TableCell>
                       <TableCell></TableCell>
                       <TableCell>
                         <Typography sx={{ color: '#f27a1a' }} variant="h6">
@@ -179,12 +180,12 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
                   }}
                 >
                   <Button color="secondary" variant="outlined">
-                    Confirm Cart
+                    {langSetter("confirmcart")}
                   </Button>
                 </div>
               </TableContainer>
             ) : (
-              <Typography variant="h3" sx={{ textAlign: 'center' }}>It's empty here</Typography>
+              <Typography variant="h3" sx={{ textAlign: 'center' }}>{langSetter("empty")}</Typography>
             )}
 
           </div>

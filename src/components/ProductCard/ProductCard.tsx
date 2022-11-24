@@ -11,10 +11,12 @@ import {
   Typography
 } from '@mui/material';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addBasketItem } from '../../redux/slices/basketSlice';
+import { RootState } from '../../redux/store/store';
 import { Product } from '../../types/products';
+import { langSetter } from '../../utils/langSetter';
 import './ProductCard.scss';
 
 
@@ -23,6 +25,7 @@ type Props = {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
 
@@ -93,10 +96,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               setOpen(true);
             }}
           >
-            Add to Cart
+            {langSetter("addtocart")}
           </Button>
         </CardActions>
       </Card>
+      <Typography sx={{ display: "none" }}>{lang}</Typography>
     </Box>
   );
 };

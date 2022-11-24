@@ -1,6 +1,9 @@
 import { Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/store';
+import { langSetter } from '../../utils/langSetter';
 import './Search.scss';
 
 interface SearchProps {
@@ -11,6 +14,8 @@ interface SearchProps {
 }
 
 export const Search: React.FC<SearchProps> = ({ query, liftingQuery, getProducts }) => {
+  const { lang } = useSelector((state: RootState) => state.lang);
+
   return (
     <Box
       sx={{
@@ -23,7 +28,7 @@ export const Search: React.FC<SearchProps> = ({ query, liftingQuery, getProducts
         color="secondary"
         className="search"
         id="outlined-basic"
-        label="Search"
+        label={langSetter("search")}
         variant="standard"
         size="small"
         value={query}
@@ -34,12 +39,16 @@ export const Search: React.FC<SearchProps> = ({ query, liftingQuery, getProducts
         variant="contained"
         color="secondary"
         onClick={() => {
-          getProducts(query);
-          liftingQuery('');
+          if (query.trim()) {
+            getProducts(query);
+            liftingQuery('');
+          }
         }}
       >
-        Search
+        {langSetter("search")}
       </Button>
+
+      <Box display="none">{lang}</Box>
     </Box>
   );
 };
