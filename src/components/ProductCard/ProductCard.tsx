@@ -1,4 +1,15 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Rating, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Rating,
+  Snackbar,
+  Typography
+} from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -13,6 +24,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <Box
@@ -30,12 +42,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         }}
       >
         <Box>
-          <CardMedia
-            component="img"
-            height="220"
-            image={product.thumbnail}
-            alt="green iguana"
-          />
+          <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }} >
+            <CardMedia
+              component="img"
+              height="220"
+              image={product.thumbnail}
+              alt="green iguana"
+            />
+          </Link>
+
 
           <CardContent>
             <Rating
@@ -45,8 +60,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               size="small"
               readOnly
             />
-            <Link to={"/products/" + product.id}>
-              <Typography textAlign="left" variant="h6" component="h5">{product.title}</Typography>
+            <Link
+              to={"/products/" + product.id}
+              style={{
+                textDecoration: 'none',
+              }}
+            >
+              <Typography
+                padding="10px 0"
+                color="#ff8208"
+                textAlign="left"
+                variant="h6"
+                component="h5"
+              >
+                {product.title}
+              </Typography>
             </Link>
             <Typography variant="body1">{`Price - ${product.price}$`}</Typography>
             <Typography variant="subtitle2">{product.description}</Typography>
@@ -54,10 +82,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Box>
 
         <CardActions>
+          <Snackbar open={open} autoHideDuration={2000} onClose={() => setOpen(false)}>
+            <Alert variant="filled" severity="success">{`${product?.title} added to cart`}</Alert>
+          </Snackbar>
+
           <Button
             color="secondary"
             onClick={() => {
               dispatch(addBasketItem(product));
+              setOpen(true);
             }}
           >
             Add to Cart

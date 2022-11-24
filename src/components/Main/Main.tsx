@@ -63,8 +63,6 @@ export const Main: React.FC = () => {
         );
       }
 
-
-      setProducts(res.products);
       setPages(Math.ceil(res.total / itemsPerPage));
       dispatch(setProducts(res.products));
     } catch (error) {
@@ -120,7 +118,7 @@ export const Main: React.FC = () => {
             flexWrap: "wrap",
             rowGap: "25px",
             columnGap: "5px",
-            justifyContent: "space-between"
+            justifyContent: "center"
           }}
         >
           {productsToRender.map((product: Product) => (
