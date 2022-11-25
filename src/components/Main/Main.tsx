@@ -77,7 +77,12 @@ export const Main: React.FC = () => {
   }, [sortBy, itemsPerPage, page, productsFromRedux]);
 
   return (
-    <main className="main">
+    <main
+      className="main"
+      style={{
+        paddingBottom: "20px"
+      }}
+    >
       <div className="container"
         style={{
           margin: "20px auto",
