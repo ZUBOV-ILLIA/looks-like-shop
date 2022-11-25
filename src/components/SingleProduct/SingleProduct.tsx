@@ -173,39 +173,38 @@ export const SingleProduct: React.FC = () => {
               </Box>
             </Paper>
 
-            <hr />
+            {comments && !!comments.length && (
+              <>
+                <hr />
+                <Paper elevation={6} sx={{ padding: '30px' }} id="comments">
+                  <Typography variant="h5" mb="20px">{langSetter("singlepostcomments")}</Typography>
 
+                  {comments.map(comment => (
+                    <React.Fragment key={comment.id}>
+                      <Box sx={{ mb: "15px", display: "flex", alignItems: "end", gap: "15px" }}>
+                        <Avatar
+                          sx={{
+                            bgcolor: `#${randomColor()}`
+                          }}
+                        >
+                          {comment.user.username.slice(0, 2).toUpperCase()}
+                        </Avatar>
 
-            {comments && (
-              <Paper elevation={6} sx={{ padding: '30px' }} id="comments">
-                <Typography variant="h5" mb="20px">{langSetter("singlepostcomments")}</Typography>
+                        <Typography variant="body2" sx={{ fontWeight: "700", color: "#999" }}>
+                          {comment.user.username}
+                        </Typography>
+                      </Box>
 
-                {comments.map(comment => (
-                  <React.Fragment key={comment.id}>
-                    <Box sx={{ mb: "15px", display: "flex", alignItems: "end", gap: "15px" }}>
-                      <Avatar
-                        sx={{
-                          bgcolor: `#${randomColor()}`
-                        }}
-                      >
-                        {comment.user.username.slice(0, 2).toUpperCase()}
-                      </Avatar>
-
-                      <Typography variant="body2" sx={{ fontWeight: "700", color: "#999" }}>
-                        {comment.user.username}
+                      <Typography sx={{ ml: "55px", color: "#666" }} variant="body1">
+                        {comment.body}
                       </Typography>
-                    </Box>
+                      <hr />
 
-                    <Typography sx={{ ml: "55px", color: "#666" }} variant="body1">
-                      {comment.body}
-                    </Typography>
-                    <hr />
-
-                  </React.Fragment>
-                ))}
-              </Paper>
+                    </React.Fragment>
+                  ))}
+                </Paper>
+              </>
             )}
-
           </div>
         </Box>
       )}

@@ -18,7 +18,7 @@ export const PageNotFound: React.FC = () => {
 
       <h1 style={{ textAlign: 'center' }}>{langSetter("oops")}</h1>
 
-      <img src="../images/404/error-404.png" alt={langSetter("oops")} style={{ width: '50%' }} />
+      <img src="images/404/error-404.png" alt={langSetter("oops")} style={{ width: '50%' }} />
 
       <Link
         className="header__nav-item"
