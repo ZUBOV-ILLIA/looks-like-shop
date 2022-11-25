@@ -4,7 +4,8 @@ import {
   Button,
   ImageList,
   ImageListItem,
-  Link,
+  // hash link not working with HashRouter
+  // Link,
   Paper,
   Rating,
   Snackbar,
@@ -114,11 +115,14 @@ export const SingleProduct: React.FC = () => {
                   />
 
                   {comments && comments.length > 0 && (
-                    <Link href="#comments">
-                      <Typography variant="body2">
-                        {langSetter("show")}{comments.length}{langSetter("comments")}
-                      </Typography>
-                    </Link>
+                    // hash link not working with HashRouter
+                    // <Link href="#comments">
+                    <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
+                      {/* {langSetter("show")} */}
+                      {comments.length}
+                      {langSetter("comments")}
+                    </Typography>
+                    // </Link>
                   )}
                 </Box>
 

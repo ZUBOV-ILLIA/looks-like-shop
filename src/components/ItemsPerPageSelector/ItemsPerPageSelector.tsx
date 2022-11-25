@@ -1,21 +1,21 @@
 import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPage } from '../../redux/slices/pageSlice';
 import { RootState } from '../../redux/store/store';
 import { langSetter } from '../../utils/langSetter';
 
 interface ItemsPerPageSelectorProps {
   itemsPerPage: number,
   liftingItemsPerPage: (arg: number) => void,
-  liftingPage: () => void,
 }
 
 export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
   itemsPerPage,
   liftingItemsPerPage,
-  liftingPage
 }) => {
   const { lang } = useSelector((state: RootState) => state.lang);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -30,7 +30,7 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
           label={langSetter("perpage")}
           onChange={(e) => {
             liftingItemsPerPage(+e.target.value);
-            liftingPage();
+            dispatch(setPage(1));
           }}
           color="secondary"
 

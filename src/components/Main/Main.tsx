@@ -13,13 +13,14 @@ import { ItemsPerPageSelector } from '../ItemsPerPageSelector/ItemsPerPageSelect
 import { SortBy } from '../SortBy/SortBy';
 import { sorting } from '../../utils/sorting';
 import { useLocation } from 'react-router-dom';
+import { setPage } from '../../redux/slices/pageSlice';
 
 export const Main: React.FC = () => {
   const productsFromRedux = useSelector((state: RootState) => state.products.products);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [productsToRender, setProductsToRender] = useState([]);
   const [pages, setPages] = useState(1);
-  const [page, setPage] = useState(1);
+  const { page } = useSelector((state: RootState) => state.page);
   const [sortBy, setSortBy] = useState('');
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
@@ -31,10 +32,6 @@ export const Main: React.FC = () => {
 
   const liftingSortBy = (arg: string) => {
     setSortBy(arg);
-  };
-
-  const liftingPage = () => {
-    setPage(1);
   };
 
   const liftingItemsPerPage = (arg: number) => {
@@ -86,7 +83,11 @@ export const Main: React.FC = () => {
           margin: "20px auto",
         }}
       >
-        <Search query={query} liftingQuery={liftingQuery} getProducts={getProducts} />
+        <Search
+          query={query}
+          liftingQuery={liftingQuery}
+          getProducts={getProducts}
+        />
 
         <Box
           sx={{
@@ -101,13 +102,14 @@ export const Main: React.FC = () => {
             color="secondary"
             count={pages}
             page={page}
-            onChange={(_, num) => setPage(num)}
+            onChange={(_, num) => {
+              dispatch(setPage(num));
+            }}
           />
 
           <ItemsPerPageSelector
             itemsPerPage={itemsPerPage}
             liftingItemsPerPage={liftingItemsPerPage}
-            liftingPage={liftingPage}
           />
         </Box>
 

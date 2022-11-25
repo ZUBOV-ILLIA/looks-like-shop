@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import './Header.scss';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { BackdropFilter } from '../BackdropFilter/BackdropFilter';
 import { Cart } from '../Cart/Cart';
 import { categories } from '../../Routes/categories';
 import { langSetter } from '../../utils/langSetter';
+import { setPage } from '../../redux/slices/pageSlice';
 
 const body = document.body;
 
@@ -17,6 +18,7 @@ export const Header: React.FC = () => {
   const basket = useSelector((state: RootState) => state.basket.basket);
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const { lang } = useSelector((state: RootState) => state.lang);
+  const dispatch = useDispatch();
 
 
   const liftingDrawerIsOpen = (arg: boolean) => {
@@ -120,6 +122,7 @@ export const Header: React.FC = () => {
                 style={{ textTransform: "uppercase"}}
                 onClick={() => {
                   liftingCategoriesVisible(false);
+                  dispatch(setPage(1));
                 }}
               >
                 {langSetter(el)}
