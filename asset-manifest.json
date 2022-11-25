@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/looks-like-shop/static/css/main.48bcb94d.css",
+    "main.js": "/looks-like-shop/static/js/main.865ffca8.js",
+    "index.html": "/looks-like-shop/index.html",
+    "main.48bcb94d.css.map": "/looks-like-shop/static/css/main.48bcb94d.css.map",
+    "main.865ffca8.js.map": "/looks-like-shop/static/js/main.865ffca8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48bcb94d.css",
+    "static/js/main.865ffca8.js"
+  ]
+}
