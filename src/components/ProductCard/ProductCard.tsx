@@ -35,15 +35,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       sx={{
         width: "240px",
       }}
-    >
+      >
       <Card
         sx={{
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          "backgroundColor": "#e9f0fc",
+          "backgroundImage": "linear-gradient(214deg, #e9f0fc 0%, #f7effe 100%)",
         }}
-      >
+        >
         <Box>
           <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }} >
             <CardMedia

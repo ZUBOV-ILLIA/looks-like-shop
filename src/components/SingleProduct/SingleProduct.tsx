@@ -71,7 +71,16 @@ export const SingleProduct: React.FC = () => {
       {product && (
         <Box sx={{ padding: '30px 0' }}>
           <div className="container">
-            <Paper elevation={6} sx={{ padding: '30px', display: 'flex', justifyContent: 'space-between' }}>
+            <Paper
+              elevation={6}
+              sx={{
+                padding: '30px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                "backgroundColor": "#E4EFFF",
+                "backgroundImage": "linear-gradient(180deg, #E4EFFF 0%, #FBF6FF 100%)",
+              }}
+            >
               <Paper elevation={3} sx={{ width: '49%' }}>
                 <ImageList sx={{ height: 400 }} cols={1}>
                   <ImageListItem>
@@ -180,7 +189,15 @@ export const SingleProduct: React.FC = () => {
             {comments && !!comments.length && (
               <>
                 <hr />
-                <Paper elevation={6} sx={{ padding: '30px' }} id="comments">
+                <Paper
+                  elevation={6}
+                  id="comments"
+                  sx={{
+                    padding: '30px',
+                    "backgroundColor": "#E4EFFF",
+                    "backgroundImage": "linear-gradient(180deg, #E4EFFF 0%, #FBF6FF 100%)",
+                  }}
+                >
                   <Typography variant="h5" mb="20px">{langSetter("singlepostcomments")}</Typography>
 
                   {comments.map(comment => (
