@@ -1,15 +1,23 @@
-import { AppBar, Badge, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import './Header.scss';
-import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
-import { BackdropFilter } from '../BackdropFilter/BackdropFilter';
-import { Cart } from '../Cart/Cart';
-import { categories } from '../../Routes/categories';
-import { langSetter } from '../../utils/langSetter';
-import { setPage } from '../../redux/slices/pageSlice';
+import {
+  AppBar,
+  Badge,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import "./Header.scss";
+import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store/store";
+import { BackdropFilter } from "../BackdropFilter/BackdropFilter";
+import { Cart } from "../Cart/Cart";
+import { categories } from "../../Routes/categories";
+import { langSetter } from "../../utils/langSetter";
+import { setPage } from "../../redux/slices/pageSlice";
+import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
 
 const body = document.body;
 
@@ -20,7 +28,6 @@ export const Header: React.FC = () => {
   const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
 
-
   const liftingDrawerIsOpen = (arg: boolean) => {
     setDrawerIsOpen(arg);
   };
@@ -29,22 +36,24 @@ export const Header: React.FC = () => {
     setCategoriesVisible(arg);
 
     if (arg) {
-      body.classList.add('scroll-off');
+      body.classList.add("scroll-off");
     } else {
-      body.classList.remove('scroll-off');
+      body.classList.remove("scroll-off");
     }
   };
 
   return (
     <header className="header">
-      {categoriesVisible && <BackdropFilter liftState={liftingCategoriesVisible} />}
+      {categoriesVisible && (
+        <BackdropFilter liftState={liftingCategoriesVisible} />
+      )}
 
       <AppBar
         position="static"
         color="secondary"
         sx={{
           width: "100% !important",
-          minWidth: '778px',
+          minWidth: "778px",
         }}
       >
         <div className="container">
@@ -53,11 +62,12 @@ export const Header: React.FC = () => {
               pl: "0 !important",
               pr: "0 !important",
               width: "100%",
-              display: 'flex',
-              justifyContent: 'space-between',
+              display: "flex",
+              justifyContent: "space-between",
             }}
           >
-            <Link to="/"
+            <Link
+              to="/"
               style={{
                 textDecoration: "none",
               }}
@@ -76,7 +86,7 @@ export const Header: React.FC = () => {
                   "&:hover": {
                     textShadow: "9px 7px 16px #2d5de3, -6px -3px 16px #0094ff",
                     WebkitTextStroke: "2px #69ff00",
-                  }
+                  },
                 }}
               >
                 Mui-Shop
@@ -93,33 +103,38 @@ export const Header: React.FC = () => {
               {langSetter("headerCategories")}
             </Button>
 
-            <IconButton
-              color="inherit"
-              size="medium"
-              sx={{
-                boxShadow: "0 0 15px #d528f4"
-              }}
-              onClick={() => setDrawerIsOpen(true)}
-            >
-              <Badge badgeContent={basket.length} color="primary">
-                <ShoppingCartTwoToneIcon
-                  fontSize="medium"
-                />
-              </Badge>
-            </IconButton>
+            <div className="header__nav-container">
+              <LanguageSelector />
+              <IconButton
+                color="inherit"
+                size="medium"
+                sx={{
+                  boxShadow: "0 0 15px #d528f4",
+                }}
+                onClick={() => setDrawerIsOpen(true)}
+              >
+                <Badge badgeContent={basket.length} color="primary">
+                  <ShoppingCartTwoToneIcon fontSize="medium" />
+                </Badge>
+              </IconButton>
+            </div>
           </Toolbar>
         </div>
       </AppBar>
 
       <div className="container">
-        <nav className={`header__nav ${categoriesVisible ? 'header__nav--active' : ''}`}>
-          {!!categories.length && (
+        <nav
+          className={`header__nav ${
+            categoriesVisible ? "header__nav--active" : ""
+          }`}
+        >
+          {!!categories.length &&
             categories.map((el: string) => (
               <Link
                 key={el}
                 className="header__nav-item"
                 to={`/${el}`}
-                style={{ textTransform: "uppercase"}}
+                style={{ textTransform: "uppercase" }}
                 onClick={() => {
                   liftingCategoriesVisible(false);
                   dispatch(setPage(1));
@@ -127,8 +142,7 @@ export const Header: React.FC = () => {
               >
                 {langSetter(el)}
               </Link>
-            ))
-          )}
+            ))}
           <Link
             className="header__nav-item"
             to="/"
@@ -136,11 +150,10 @@ export const Header: React.FC = () => {
               liftingCategoriesVisible(false);
             }}
             style={{
-              color: '#000',
+              color: "#000",
               fontWeight: 700,
-              textTransform: "uppercase"
+              textTransform: "uppercase",
             }}
-
           >
             {langSetter("allcategories")}
           </Link>
@@ -149,7 +162,10 @@ export const Header: React.FC = () => {
 
       <Typography sx={{ display: "none" }}>{lang}</Typography>
 
-      <Cart liftingDrawerIsOpen={liftingDrawerIsOpen} drawerIsOpen={drawerIsOpen} />
+      <Cart
+        liftingDrawerIsOpen={liftingDrawerIsOpen}
+        drawerIsOpen={drawerIsOpen}
+      />
     </header>
   );
 };

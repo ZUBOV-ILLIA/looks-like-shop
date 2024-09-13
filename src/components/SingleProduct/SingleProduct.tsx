@@ -1,6 +1,7 @@
 import {
   Alert,
   Avatar,
+  Box,
   Button,
   ImageList,
   ImageListItem,
@@ -9,23 +10,21 @@ import {
   Paper,
   Rating,
   Snackbar,
-  Typography
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getCommentsFromAPI } from '../../api/getCommentsFromAPI';
-import { getProductsFromAPI } from '../../api/getProductsFromAPI';
-import { PromiseComments } from '../../react-app-env';
-import { addBasketItem } from '../../redux/slices/basketSlice';
-import { RootState } from '../../redux/store/store';
-import { Comment } from '../../types/comments';
-import { Product } from '../../types/products';
-import { langSetter } from '../../utils/langSetter';
-import { Footer } from '../Footer/Footer';
-import { Header } from '../Header/Header';
-import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getCommentsFromAPI } from "../../api/getCommentsFromAPI";
+import { getProductsFromAPI } from "../../api/getProductsFromAPI";
+import { PromiseComments } from "../../react-app-env";
+import { addBasketItem } from "../../redux/slices/basketSlice";
+import { RootState } from "../../redux/store/store";
+import { Comment } from "../../types/comments";
+import { Product } from "../../types/products";
+import { langSetter } from "../../utils/langSetter";
+import { Footer } from "../Footer/Footer";
+import { Header } from "../Header/Header";
 
 export const SingleProduct: React.FC = () => {
   const { params } = useParams();
@@ -64,24 +63,23 @@ export const SingleProduct: React.FC = () => {
 
   return (
     <>
-      <LanguageSelector />
-
       <Header />
 
       {product && (
-        <Box sx={{ padding: '30px 0' }}>
+        <Box sx={{ padding: "30px 0" }}>
           <div className="container">
             <Paper
               elevation={6}
               sx={{
-                padding: '30px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                "backgroundColor": "#E4EFFF",
-                "backgroundImage": "linear-gradient(180deg, #E4EFFF 0%, #FBF6FF 100%)",
+                padding: "30px",
+                display: "flex",
+                justifyContent: "space-between",
+                backgroundColor: "#E4EFFF",
+                backgroundImage:
+                  "linear-gradient(180deg, #E4EFFF 0%, #FBF6FF 100%)",
               }}
             >
-              <Paper elevation={3} sx={{ width: '49%' }}>
+              <Paper elevation={3} sx={{ width: "49%" }}>
                 <ImageList sx={{ height: 400 }} cols={1}>
                   <ImageListItem>
                     <img
@@ -90,7 +88,7 @@ export const SingleProduct: React.FC = () => {
                       alt="product-pic"
                       loading="lazy"
                       style={{
-                        height: '400px',
+                        height: "400px",
                         objectFit: "contain",
                       }}
                     />
@@ -104,7 +102,7 @@ export const SingleProduct: React.FC = () => {
                         alt="product-pic"
                         loading="lazy"
                         style={{
-                          height: '400px',
+                          height: "400px",
                           objectFit: "contain",
                         }}
                       />
@@ -112,9 +110,13 @@ export const SingleProduct: React.FC = () => {
                   ))}
                 </ImageList>
               </Paper>
-              <Box sx={{ width: '49%' }}>
-                <Typography variant="h5" marginBottom="10px">{product.title}</Typography>
-                <Box sx={{ marginBottom: "10px", display: "flex", gap: "15px" }}>
+              <Box sx={{ width: "49%" }}>
+                <Typography variant="h5" marginBottom="10px">
+                  {product.title}
+                </Typography>
+                <Box
+                  sx={{ marginBottom: "10px", display: "flex", gap: "15px" }}
+                >
                   <Rating
                     name="read-only"
                     value={product.rating}
@@ -126,7 +128,10 @@ export const SingleProduct: React.FC = () => {
                   {comments && comments.length > 0 && (
                     // hash link not working with HashRouter
                     // <Link href="#comments">
-                    <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ display: "flex", alignItems: "center" }}
+                    >
                       {/* {langSetter("show")} */}
                       {comments.length}
                       {langSetter("comments")}
@@ -138,7 +143,7 @@ export const SingleProduct: React.FC = () => {
                 <Typography variant="subtitle1">{`${product.price} $`}</Typography>
 
                 {product.stock < 50 && (
-                  <Typography color="#ff0000" variant="caption" >
+                  <Typography color="#ff0000" variant="caption">
                     {langSetter("lessproducts")}
                   </Typography>
                 )}
@@ -146,8 +151,14 @@ export const SingleProduct: React.FC = () => {
                 <hr />
 
                 <Box>
-                  <Snackbar open={open} autoHideDuration={2000} onClose={() => setOpen(false)}>
-                    <Alert variant="filled" severity="success">{`${product?.title} ${langSetter("addedinfo")}`}</Alert>
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={2000}
+                    onClose={() => setOpen(false)}
+                  >
+                    <Alert variant="filled" severity="success">{`${
+                      product?.title
+                    } ${langSetter("addedinfo")}`}</Alert>
                   </Snackbar>
 
                   <Button
@@ -170,18 +181,22 @@ export const SingleProduct: React.FC = () => {
                     mb: "20px",
                     padding: "10px",
                     width: "60%",
-                    border: '2px solid #ca980a80',
-                    boxShadow: "0px 2px 1px -1px #ca980a80, 0px 1px 1px 0px #d6b11ba8, 0px 1px 3px 0px #dc9f14d4",
-                    bgcolor: "#ffab0042"
+                    border: "2px solid #ca980a80",
+                    boxShadow:
+                      "0px 2px 1px -1px #ca980a80, 0px 1px 1px 0px #d6b11ba8, 0px 1px 3px 0px #dc9f14d4",
+                    bgcolor: "#ffab0042",
                   }}
                 >
                   <Typography variant="subtitle1">
-                    {langSetter("discount")}{` ${product.discountPercentage} $`}
+                    {langSetter("discount")}
+                    {` ${product.discountPercentage} $`}
                   </Typography>
                 </Paper>
 
                 <Box>
-                  <Typography variant="subtitle1">{product.description}</Typography>
+                  <Typography variant="subtitle1">
+                    {product.description}
+                  </Typography>
                 </Box>
               </Box>
             </Paper>
@@ -193,34 +208,49 @@ export const SingleProduct: React.FC = () => {
                   elevation={6}
                   id="comments"
                   sx={{
-                    padding: '30px',
-                    "backgroundColor": "#E4EFFF",
-                    "backgroundImage": "linear-gradient(180deg, #E4EFFF 0%, #FBF6FF 100%)",
+                    padding: "30px",
+                    backgroundColor: "#E4EFFF",
+                    backgroundImage:
+                      "linear-gradient(180deg, #E4EFFF 0%, #FBF6FF 100%)",
                   }}
                 >
-                  <Typography variant="h5" mb="20px">{langSetter("singlepostcomments")}</Typography>
+                  <Typography variant="h5" mb="20px">
+                    {langSetter("singlepostcomments")}
+                  </Typography>
 
-                  {comments.map(comment => (
+                  {comments.map((comment) => (
                     <React.Fragment key={comment.id}>
-                      <Box sx={{ mb: "15px", display: "flex", alignItems: "end", gap: "15px" }}>
+                      <Box
+                        sx={{
+                          mb: "15px",
+                          display: "flex",
+                          alignItems: "end",
+                          gap: "15px",
+                        }}
+                      >
                         <Avatar
                           sx={{
-                            bgcolor: `#${randomColor()}`
+                            bgcolor: `#${randomColor()}`,
                           }}
                         >
                           {comment.user.username.slice(0, 2).toUpperCase()}
                         </Avatar>
 
-                        <Typography variant="body2" sx={{ fontWeight: "700", color: "#999" }}>
+                        <Typography
+                          variant="body2"
+                          sx={{ fontWeight: "700", color: "#999" }}
+                        >
                           {comment.user.username}
                         </Typography>
                       </Box>
 
-                      <Typography sx={{ ml: "55px", color: "#666" }} variant="body1">
+                      <Typography
+                        sx={{ ml: "55px", color: "#666" }}
+                        variant="body1"
+                      >
                         {comment.body}
                       </Typography>
                       <hr />
-
                     </React.Fragment>
                   ))}
                 </Paper>

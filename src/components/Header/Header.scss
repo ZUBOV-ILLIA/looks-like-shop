@@ -18,7 +18,7 @@
     z-index: 100;
     overflow: hidden;
     transition: 0.3s linear;
-    
+
     &--active {
       padding: 20px;
       height: 250px;
@@ -31,9 +31,18 @@
     color: #808080;
     text-decoration: none;
     transition: 0.2s linear;
-    
+
     &:hover {
       color: #daba37;
     }
+  }
+
+  &__nav-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .lang-selector {
+    margin-right: 16px;
   }
 }
