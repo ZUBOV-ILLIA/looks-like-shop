@@ -8,21 +8,20 @@ import {
   CardMedia,
   Rating,
   Snackbar,
-  Typography
-} from '@mui/material';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { addBasketItem } from '../../redux/slices/basketSlice';
-import { RootState } from '../../redux/store/store';
-import { Product } from '../../types/products';
-import { langSetter } from '../../utils/langSetter';
-import './ProductCard.scss';
-
+  Typography,
+} from "@mui/material";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { addBasketItem } from "../../redux/slices/basketSlice";
+import { RootState } from "../../redux/store/store";
+import { Product } from "../../types/products";
+import { langSetter } from "../../utils/langSetter";
+import "./ProductCard.scss";
 
 type Props = {
-  product: Product
-}
+  product: Product;
+};
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { lang } = useSelector((state: RootState) => state.lang);
@@ -33,29 +32,33 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <Box
       className="product-card"
       sx={{
-        width: "240px",
+        padding: "5px",
       }}
-      >
+    >
       <Card
         sx={{
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          "backgroundColor": "#e9f0fc",
-          "backgroundImage": "linear-gradient(214deg, #e9f0fc 0%, #f7effe 100%)",
+          backgroundColor: "#e9f0fc",
+          backgroundImage: "linear-gradient(214deg, #e9f0fc 0%, #f7effe 100%)",
+          borderRadius: "12px",
         }}
-        >
+      >
         <Box>
-          <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }} >
+          <Link
+            to={"/products/" + product.id}
+            style={{ textDecoration: "none" }}
+          >
             <CardMedia
               component="img"
               height="220"
               image={product.thumbnail}
               alt="green iguana"
+              sx={{ objectFit: "contain" }}
             />
           </Link>
-
 
           <CardContent>
             <Rating
@@ -68,7 +71,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             <Link
               to={"/products/" + product.id}
               style={{
-                textDecoration: 'none',
+                textDecoration: "none",
               }}
             >
               <Typography
@@ -87,8 +90,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Box>
 
         <CardActions>
-          <Snackbar open={open} autoHideDuration={2000} onClose={() => setOpen(false)}>
-            <Alert variant="filled" severity="success">{`${product?.title} added to cart`}</Alert>
+          <Snackbar
+            open={open}
+            autoHideDuration={2000}
+            onClose={() => setOpen(false)}
+          >
+            <Alert
+              variant="filled"
+              severity="success"
+            >{`${product?.title} added to cart`}</Alert>
           </Snackbar>
 
           <Button

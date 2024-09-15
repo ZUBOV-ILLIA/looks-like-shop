@@ -1,0 +1,57 @@
+.footer {
+  padding: 80px 50px;
+  background: #000;
+  color: #fff;
+
+  &__wrapper {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 500px) {
+    }
+  }
+
+  &__title {
+    @media (max-width: 768px) {
+      margin-bottom: 32px !important;
+      min-width: 100%;
+    }
+  }
+
+  &__aboutme {
+    width: 30%;
+
+    @media (max-width: 768px) {
+      width: 45%;
+    }
+
+    @media (max-width: 500px) {
+      margin-bottom: 32px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__technologys {
+    width: 30%;
+
+    @media (max-width: 768px) {
+      width: 45%;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .social-links {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+}

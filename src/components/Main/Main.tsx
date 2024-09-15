@@ -124,16 +124,14 @@ export const Main: React.FC = () => {
         </Box>
 
         <Box
-          sx={
-            {
-              // marginTop: "10px",
-              // display: "flex",
-              // flexWrap: "wrap",
-              // rowGap: "25px",
-              // columnGap: "5px",
-              // justifyContent: "center",
-            }
-          }
+          className="product-list"
+          sx={{
+            margin: "10px -5px",
+            display: "flex",
+            flexWrap: "wrap",
+            rowGap: "25px",
+            justifyContent: "start",
+          }}
         >
           {productsToRender.map((product: Product) => (
             <ProductCard key={product.id} product={product} />
