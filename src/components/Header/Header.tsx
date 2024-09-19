@@ -48,14 +48,7 @@ export const Header: React.FC = () => {
         <BackdropFilter liftState={liftingCategoriesVisible} />
       )}
 
-      <AppBar
-        position="static"
-        color="secondary"
-        sx={{
-          width: "100% !important",
-          minWidth: "778px",
-        }}
-      >
+      <AppBar position="static" color="secondary">
         <div className="container">
           <Toolbar
             sx={{
