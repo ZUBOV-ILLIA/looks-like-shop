@@ -1,5 +1,5 @@
 import { Box, Pagination } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./Main.scss";
 import { Product } from "../../types/products";
 import { ProductCard } from "../ProductCard/ProductCard";
@@ -40,7 +40,7 @@ export const Main: React.FC = () => {
     setItemsPerPage(arg);
   };
 
-  const getProducts = async (arg: string) => {
+  const getProducts = useCallback(async (arg: string) => {
     let queryLocation = "";
     let search = "";
 
@@ -69,11 +69,11 @@ export const Main: React.FC = () => {
     } catch (error) {
       throw new Error(`${error}`);
     }
-  };
+  }, [itemsPerPage, page, location.pathname, dispatch]);
 
   useEffect(() => {
     getProducts("");
-  }, [itemsPerPage, page, location.pathname]);
+  }, [getProducts]);
 
   useEffect(() => {
     sorting(productsFromRedux, sortBy, setProductsToRender);

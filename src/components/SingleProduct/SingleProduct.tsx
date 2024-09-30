@@ -12,7 +12,7 @@ import {
   Snackbar,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCommentsFromAPI } from "../../api/getCommentsFromAPI";
@@ -34,7 +34,7 @@ export const SingleProduct: React.FC = () => {
   const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
 
-  const getCommets = async () => {
+  const getCommets = useCallback(async () => {
     try {
       const res: PromiseComments = await getCommentsFromAPI(`/post/${params}`);
 
@@ -42,9 +42,9 @@ export const SingleProduct: React.FC = () => {
     } catch (error) {
       throw new Error(`${error}`);
     }
-  };
+  }, [params]);
 
-  const getProduct = async () => {
+  const getProduct = useCallback(async () => {
     try {
       const res: Product = await getProductsFromAPI(`/${params}`);
 
@@ -52,14 +52,14 @@ export const SingleProduct: React.FC = () => {
     } catch (error) {
       throw new Error(`${error}`);
     }
-  };
+  }, [params]);
 
   const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
 
   useEffect(() => {
     getProduct();
     getCommets();
-  }, []);
+  }, [getProduct, getCommets]);
 
   return (
     <>
