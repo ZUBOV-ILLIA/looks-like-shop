@@ -104,11 +104,11 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/lang/ru.ts`
 - Modify: `src/lang/ua.ts`
 
-- [ ] Fetch categories dynamically from DummyJSON API (/products/categories) instead of hardcoded list - this will include all available categories (the API has more than the 20 currently hardcoded)
-- [ ] Redesign category navigation: clean horizontal menu or dropdown with category names
-- [ ] Improve mobile category menu: clean slide-out menu instead of current implementation
-- [ ] Add category translations for new categories in all 3 languages
-- [ ] Increase default items per page from 8 to 12 for denser product browsing
+- [x] Fetch categories dynamically from DummyJSON API (/products/categories) instead of hardcoded list - this will include all available categories (the API has more than the 20 currently hardcoded)
+- [x] Redesign category navigation: clean horizontal menu or dropdown with category names
+- [x] Improve mobile category menu: clean slide-out menu instead of current implementation
+- [x] Add category translations for new categories in all 3 languages
+- [x] Increase default items per page from 8 to 12 for denser product browsing
 
 ### Task 7: Search and Filter UI Improvements
 

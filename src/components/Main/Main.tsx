@@ -19,7 +19,7 @@ export const Main: React.FC = () => {
   const productsFromRedux = useSelector(
     (state: RootState) => state.products.products
   );
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
   const [productsToRender, setProductsToRender] = useState([]);
   const [pages, setPages] = useState(1);
   const { page } = useSelector((state: RootState) => state.page);
