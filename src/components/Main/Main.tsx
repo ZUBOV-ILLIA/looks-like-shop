@@ -1,4 +1,4 @@
-import { Box, Pagination } from "@mui/material";
+import { Box, Pagination, Skeleton } from "@mui/material";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./Main.scss";
 import { Product } from "../../types/products";
@@ -15,6 +15,20 @@ import { sorting } from "../../utils/sorting";
 import { useLocation } from "react-router-dom";
 import { setPage } from "../../redux/slices/pageSlice";
 
+const ProductSkeleton: React.FC = () => (
+  <Box className="product-card">
+    <Box className="product-card__inner" sx={{ padding: '16px' }}>
+      <Skeleton variant="rectangular" height={260} sx={{ borderRadius: '8px', marginBottom: '16px' }} />
+      <Skeleton variant="text" width="40%" height={20} sx={{ marginBottom: '4px' }} />
+      <Skeleton variant="text" width="80%" height={24} sx={{ marginBottom: '8px' }} />
+      <Skeleton variant="text" width="30%" height={24} sx={{ marginBottom: '8px' }} />
+      <Skeleton variant="text" width="100%" height={16} />
+      <Skeleton variant="text" width="90%" height={16} sx={{ marginBottom: '16px' }} />
+      <Skeleton variant="rectangular" height={36} sx={{ borderRadius: '6px' }} />
+    </Box>
+  </Box>
+);
+
 export const Main: React.FC = () => {
   const productsFromRedux = useSelector(
     (state: RootState) => state.products.products
@@ -26,6 +40,7 @@ export const Main: React.FC = () => {
   const [sortBy, setSortBy] = useState("");
   const [query, setQuery] = useState("");
   const [activeSearch, setActiveSearch] = useState("");
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const location = useLocation();
   const prevPathnameRef = useRef(location.pathname);
@@ -47,6 +62,7 @@ export const Main: React.FC = () => {
     let search = "";
 
     setActiveSearch(arg);
+    setLoading(true);
 
     if (location.pathname !== "/") {
       queryLocation = "/category" + location.pathname;
@@ -73,6 +89,8 @@ export const Main: React.FC = () => {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Failed to load products:", error);
+    } finally {
+      setLoading(false);
     }
   }, [itemsPerPage, page, location.pathname, dispatch]);
 
@@ -165,9 +183,15 @@ export const Main: React.FC = () => {
             justifyContent: "start",
           }}
         >
-          {productsToRender.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {loading ? (
+            Array.from({ length: itemsPerPage }, (_, i) => (
+              <ProductSkeleton key={i} />
+            ))
+          ) : (
+            productsToRender.map((product: Product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          )}
         </Box>
       </div>
     </main>

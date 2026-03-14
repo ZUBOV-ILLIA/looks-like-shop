@@ -62,6 +62,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               height="260"
               image={product.thumbnail}
               alt={product.title}
+              loading="lazy"
               sx={{ objectFit: "contain", padding: "16px 16px 0" }}
             />
           </Link>

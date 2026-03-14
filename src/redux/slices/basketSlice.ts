@@ -9,8 +9,25 @@ interface InitialState {
   basket: BasketItem[],
 }
 
+const loadBasketFromStorage = (): BasketItem[] => {
+	try {
+		const stored = localStorage.getItem('basket');
+		return stored ? JSON.parse(stored) : [];
+	} catch {
+		return [];
+	}
+};
+
+const saveBasketToStorage = (basket: BasketItem[]) => {
+	try {
+		localStorage.setItem('basket', JSON.stringify(basket));
+	} catch {
+		// localStorage unavailable
+	}
+};
+
 const initialState: InitialState = {
-	basket: [],
+	basket: loadBasketFromStorage(),
 };
 
 const basketSlice = createSlice({
@@ -33,6 +50,7 @@ const basketSlice = createSlice({
 			} else {
 				state.basket.push({ ...action.payload, quantity: 1 });
 			}
+			saveBasketToStorage(state.basket);
 		},
 		removeBasketItem: (state, action) => {
 			state.basket = state.basket.map(item => {
@@ -44,10 +62,11 @@ const basketSlice = createSlice({
 
 				return item;
 			});
-
+			saveBasketToStorage(state.basket);
 		},
 		deleteBasketItem: (state, action) => {
 			state.basket = state.basket.filter((item: BasketItem) => item.id !== action.payload.id);
+			saveBasketToStorage(state.basket);
 		}
 	}
 });
