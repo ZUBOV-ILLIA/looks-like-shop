@@ -66,11 +66,11 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/components/Cart/Cart.tsx`
 - Modify: `src/components/Cart/Cart.scss`
 
-- [ ] Clean white drawer with proper spacing
-- [ ] Simplify cart item rows: small thumbnail, title, quantity controls, price
-- [ ] Clean total section at bottom
-- [ ] Remove heavy colored styling, use minimal borders for separation
-- [ ] Improve empty cart state with clean message
+- [x] Clean white drawer with proper spacing
+- [x] Simplify cart item rows: small thumbnail, title, quantity controls, price
+- [x] Clean total section at bottom
+- [x] Remove heavy colored styling, use minimal borders for separation
+- [x] Improve empty cart state with clean message
 
 ### Task 5: Add Wishlist Feature
 
