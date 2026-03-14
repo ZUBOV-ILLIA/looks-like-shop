@@ -6,14 +6,17 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  IconButton,
   Rating,
   Snackbar,
   Typography,
 } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addBasketItem } from "../../redux/slices/basketSlice";
+import { toggleWishlistItem } from "../../redux/slices/wishlistSlice";
 import { RootState } from "../../redux/store/store";
 import { Product } from "../../types/products";
 import { langSetter } from "../../utils/langSetter";
@@ -25,6 +28,8 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { lang } = useSelector((state: RootState) => state.lang);
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
+  const isWishlisted = wishlistItems.some((item) => item.id === product.id);
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
 
@@ -36,7 +41,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <Box className="product-card">
       <Card className="product-card__inner">
-        <Box>
+        <Box sx={{ position: "relative" }}>
+          <IconButton
+            className="product-card__wishlist-btn"
+            onClick={() => dispatch(toggleWishlistItem(product))}
+            size="small"
+          >
+            {isWishlisted ? (
+              <Favorite sx={{ fontSize: "1.25rem", color: "#ff3b30" }} />
+            ) : (
+              <FavoriteBorder sx={{ fontSize: "1.25rem", color: "#86868b" }} />
+            )}
+          </IconButton>
           <Link
             to={"/products/" + product.id}
             style={{ textDecoration: "none" }}

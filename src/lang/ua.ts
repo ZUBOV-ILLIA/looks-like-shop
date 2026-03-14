@@ -52,5 +52,9 @@ export const ua: LangType = {
 	"backto": "Назад до товарів",
 	"brand": "Бренд",
 	"category": "Категорія",
-	"stock": "В наявності"
+	"stock": "В наявності",
+	"wishlist": "Обране",
+	"wishlistEmpty": "Список обраного порожній",
+	"addedToWishlist": "Додано до обраного",
+	"removedFromWishlist": "Видалено з обраного"
 };

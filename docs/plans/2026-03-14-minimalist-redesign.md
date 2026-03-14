@@ -87,11 +87,11 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/lang/ru.ts`
 - Modify: `src/lang/ua.ts`
 
-- [ ] Create wishlistSlice with add/remove/toggle actions, persist to localStorage
-- [ ] Add heart icon toggle on ProductCard and SingleProduct page
-- [ ] Add wishlist icon with badge counter in Header (next to cart)
-- [ ] Create Wishlist drawer (similar to Cart) showing saved products
-- [ ] Add translations for wishlist-related strings in all 3 languages
+- [x] Create wishlistSlice with add/remove/toggle actions, persist to localStorage
+- [x] Add heart icon toggle on ProductCard and SingleProduct page
+- [x] Add wishlist icon with badge counter in Header (next to cart)
+- [x] Create Wishlist drawer (similar to Cart) showing saved products
+- [x] Add translations for wishlist-related strings in all 3 languages
 
 ### Task 6: Expand Product Categories and Improve Navigation
 
