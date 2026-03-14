@@ -53,17 +53,17 @@ Add a multi-step checkout page (address -> payment -> confirmation) with progres
 - Modify: `src/components/Cart/Cart.tsx` (add "Checkout" button linking to /checkout)
 - Modify: `src/lang/en.ts`, `src/lang/ru.ts`, `src/lang/ua.ts` (checkout translations)
 
-- [ ] Create Checkout component with step state management (steps 1-3)
-- [ ] Build progress bar showing current step (Address -> Payment -> Confirmation)
-- [ ] AddressStep: form fields for name, email, phone, address, city, zip code with basic validation
-- [ ] PaymentStep: card number input (with formatting), expiry date, CVV, cardholder name with basic validation (demo only, no real processing)
-- [ ] ConfirmationStep: order summary showing cart items, totals, entered address and masked card number, "Place Order" button
-- [ ] Add "Proceed to Checkout" button in Cart drawer that navigates to /checkout
-- [ ] Add /checkout route in App.tsx
-- [ ] Add all checkout-related translations to lang files (en, ru, ua)
-- [ ] Style with SCSS following existing BEM conventions, use CSS variables for theme support
-- [ ] Write tests for Checkout component and each step
-- [ ] Run project test suite - must pass before task 3
+- [x] Create Checkout component with step state management (steps 1-3)
+- [x] Build progress bar showing current step (Address -> Payment -> Confirmation)
+- [x] AddressStep: form fields for name, email, phone, address, city, zip code with basic validation
+- [x] PaymentStep: card number input (with formatting), expiry date, CVV, cardholder name with basic validation (demo only, no real processing)
+- [x] ConfirmationStep: order summary showing cart items, totals, entered address and masked card number, "Place Order" button
+- [x] Add "Proceed to Checkout" button in Cart drawer that navigates to /checkout
+- [x] Add /checkout route in App.tsx
+- [x] Add all checkout-related translations to lang files (en, ru, ua)
+- [x] Style with SCSS following existing BEM conventions, use CSS variables for theme support
+- [x] Write tests for Checkout component and each step
+- [x] Run project test suite - must pass before task 3
 
 ### Task 3: Mobile Responsiveness Improvements
 

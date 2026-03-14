@@ -1,0 +1,308 @@
+.checkout {
+  min-height: calc(100vh - 200px);
+  background-color: var(--color-bg-primary);
+  padding: 40px 20px;
+
+  &__container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__empty,
+  &__success {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-text-secondary);
+  }
+
+  &__success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--color-accent-green);
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  &__success h2 {
+    color: var(--color-text-primary);
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+  }
+
+  &__success p {
+    margin: 0 0 24px;
+  }
+
+  // Progress bar
+  &__progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 0 20px;
+  }
+
+  &__progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 1;
+  }
+
+  &__progress-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-tertiary);
+    border: 2px solid var(--color-border-primary);
+    transition: all 0.3s ease;
+  }
+
+  &__progress-step--active &__progress-number {
+    background-color: var(--color-btn-primary);
+    color: var(--color-btn-primary-text);
+    border-color: var(--color-btn-primary);
+  }
+
+  &__progress-step--completed &__progress-number {
+    background-color: var(--color-accent-green);
+    color: #fff;
+    border-color: var(--color-accent-green);
+  }
+
+  &__progress-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+  }
+
+  &__progress-step--active &__progress-label {
+    color: var(--color-text-primary);
+  }
+
+  &__progress-line {
+    position: absolute;
+    top: 18px;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background-color: var(--color-border-light);
+  }
+
+  &__progress-fill {
+    height: 100%;
+    background-color: var(--color-accent-green);
+    transition: width 0.3s ease;
+  }
+
+  // Step form
+  &__step {
+    background-color: var(--color-bg-surface);
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid var(--color-border-light);
+  }
+
+  &__step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 24px;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+  }
+
+  &__field-row {
+    display: flex;
+    gap: 16px;
+
+    .checkout__field {
+      flex: 1;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 6px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-surface);
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent-blue);
+    }
+
+    &--error {
+      border-color: var(--color-error);
+    }
+  }
+
+  &__error {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-error);
+    margin-top: 4px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  &__next-btn,
+  &__place-order-btn {
+    padding: 14px 32px;
+    background-color: var(--color-btn-primary);
+    color: var(--color-btn-primary-text);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
+    margin-left: auto;
+
+    &:hover {
+      background-color: var(--color-btn-primary-hover);
+    }
+  }
+
+  &__back-btn {
+    padding: 14px 32px;
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-text-primary);
+      color: var(--color-text-primary);
+    }
+  }
+
+  // Confirmation summary
+  &__summary-section {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border-light);
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  &__summary-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 12px;
+  }
+
+  &__summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__summary-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__summary-item-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    background-color: var(--color-bg-secondary);
+  }
+
+  &__summary-item-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__summary-item-title {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__summary-item-qty {
+    font-size: 0.8125rem;
+    color: var(--color-text-tertiary);
+  }
+
+  &__summary-item-price {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  &__summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-lighter);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  &__summary-total-price {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__summary-text {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 4px;
+    line-height: 1.5;
+  }
+}
