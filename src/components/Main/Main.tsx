@@ -16,7 +16,7 @@ import { useLocation } from "react-router-dom";
 import { setPage } from "../../redux/slices/pageSlice";
 
 const ProductSkeleton: React.FC = () => (
-  <Box className="product-card">
+  <Box className="product-card" data-testid="product-skeleton">
     <Box className="product-card__inner" sx={{ padding: '16px' }}>
       <Skeleton variant="rectangular" height={260} sx={{ borderRadius: '8px', marginBottom: '16px' }} />
       <Skeleton variant="text" width="40%" height={20} sx={{ marginBottom: '4px' }} />

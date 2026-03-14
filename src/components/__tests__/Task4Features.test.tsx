@@ -92,7 +92,7 @@ describe('Product loading skeletons', () => {
     // Import Main lazily to capture loading state
     const { Main } = await import('../Main/Main');
 
-    const { container } = render(
+    render(
       <Provider store={store}>
         <MemoryRouter>
           <Main />
@@ -101,7 +101,7 @@ describe('Product loading skeletons', () => {
     );
 
     // During initial load, skeletons should be present
-    const skeletons = container.querySelectorAll('.MuiSkeleton-root');
+    const skeletons = screen.getAllByTestId('product-skeleton');
     expect(skeletons.length).toBeGreaterThan(0);
   });
 });

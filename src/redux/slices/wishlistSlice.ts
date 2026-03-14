@@ -38,9 +38,12 @@ const wishlistSlice = createSlice({
       saveToStorage(current(state.items));
     },
     removeWishlistItem: (state, action: PayloadAction<Product>) => {
-      state.items = state.items.filter(
-        (item) => item.id !== action.payload.id
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
       );
+      if (index >= 0) {
+        state.items.splice(index, 1);
+      }
       saveToStorage(current(state.items));
     },
   },

@@ -79,7 +79,7 @@ export const Checkout: React.FC = () => {
                     index <= currentStep ? 'checkout__progress-step--active' : ''
                   } ${index < currentStep ? 'checkout__progress-step--completed' : ''}`}
                 >
-                  <div className="checkout__progress-number">{index + 1}</div>
+                  <div className="checkout__progress-number" data-testid="progress-number">{index + 1}</div>
                   <span className="checkout__progress-label">{langSetter(key)}</span>
                 </div>
               ))}
