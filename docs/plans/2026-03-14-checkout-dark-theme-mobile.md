@@ -98,13 +98,13 @@ Add a multi-step checkout page (address -> payment -> confirmation) with progres
 - Modify: `src/components/Main/Main.scss`
 - Modify: `src/components/ProductCard/ProductCard.tsx` (image lazy loading)
 
-- [ ] Cart persistence: save cart to localStorage (like wishlist), restore on page load
-- [ ] Product loading skeletons: add MUI Skeleton placeholders while products load instead of blank screen
-- [ ] Scroll to top button: floating button that appears on scroll, smooth scroll to top
-- [ ] Image lazy loading: add loading="lazy" to product images for better performance
-- [ ] Add smooth page transitions between routes
-- [ ] Write tests for cart persistence and new components
-- [ ] Run project test suite - must pass before task 5
+- [x] Cart persistence: save cart to localStorage (like wishlist), restore on page load
+- [x] Product loading skeletons: add MUI Skeleton placeholders while products load instead of blank screen
+- [x] Scroll to top button: floating button that appears on scroll, smooth scroll to top
+- [x] Image lazy loading: add loading="lazy" to product images for better performance
+- [x] Add smooth page transitions between routes
+- [x] Write tests for cart persistence and new components
+- [x] Run project test suite - must pass before task 5
 
 ### Task 5: Verify Acceptance Criteria
 

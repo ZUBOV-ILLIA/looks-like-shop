@@ -34,3 +34,19 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app-fade {
+  animation: fadeIn 0.3s ease;
+}

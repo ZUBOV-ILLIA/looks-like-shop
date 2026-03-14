@@ -6,6 +6,7 @@ import { SingleProduct } from "./components/SingleProduct/SingleProduct";
 import { Checkout } from "./components/Checkout/Checkout";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "./redux/slices/categoriesSlice";
 import { AppDispatch, RootState } from "./redux/store/store";
@@ -23,7 +24,7 @@ export const App: React.FC = () => {
   }, [theme]);
 
   return (
-    <>
+    <div className="app-fade">
       <Routes>
         <Route path="/" element={<Layout />} />
         <Route path="products/:params" element={<SingleProduct />} />
@@ -31,6 +32,7 @@ export const App: React.FC = () => {
         <Route path=":category" element={<Layout />} />
         <Route path="*" element={<><Header /><PageNotFound /><Footer /></>} />
       </Routes>
-    </>
+      <ScrollToTop />
+    </div>
   );
 };
