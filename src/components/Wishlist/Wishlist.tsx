@@ -71,7 +71,7 @@ export const Wishlist: React.FC<WishlistProps> = ({
                   <p className="wishlist-drawer__item-price">
                     ${product.discountPercentage > 0
                       ? (product.price * (1 - product.discountPercentage / 100)).toFixed(2)
-                      : product.price}
+                      : product.price.toFixed(2)}
                   </p>
                   <button
                     className="wishlist-drawer__add-cart-btn"
