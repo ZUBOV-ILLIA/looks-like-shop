@@ -75,11 +75,11 @@ describe('Checkout', () => {
   it('shows progress bar with 3 steps', () => {
     const store = createTestStore([{ ...mockProduct, quantity: 1 }]);
     renderCheckout(store);
-    const progressNumbers = document.querySelectorAll('.checkout__progress-number');
-    expect(progressNumbers).toHaveLength(3);
-    expect(progressNumbers[0].textContent).toBe('1');
-    expect(progressNumbers[1].textContent).toBe('2');
-    expect(progressNumbers[2].textContent).toBe('3');
+    const progressSteps = screen.getAllByTestId('progress-number');
+    expect(progressSteps).toHaveLength(3);
+    expect(progressSteps[0].textContent).toBe('1');
+    expect(progressSteps[1].textContent).toBe('2');
+    expect(progressSteps[2].textContent).toBe('3');
   });
 
   it('validates address fields before proceeding', () => {

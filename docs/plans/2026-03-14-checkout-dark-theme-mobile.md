@@ -108,13 +108,13 @@ Add a multi-step checkout page (address -> payment -> confirmation) with progres
 
 ### Task 5: Verify Acceptance Criteria
 
-- [ ] Manual test: toggle dark/light theme, verify all pages look correct in both themes
-- [ ] Manual test: complete full checkout flow (address -> payment -> confirmation)
-- [ ] Manual test: resize browser to mobile widths, verify all pages are usable
-- [ ] Manual test: verify cart persists across page reload
-- [ ] Run full test suite (`npm test`)
-- [ ] Run linter (`npx eslint src/`)
-- [ ] Verify test coverage meets 80%+
+- [x] Manual test: toggle dark/light theme, verify all pages look correct in both themes
+- [x] Manual test: complete full checkout flow (address -> payment -> confirmation)
+- [x] Manual test: resize browser to mobile widths, verify all pages are usable
+- [x] Manual test: verify cart persists across page reload
+- [x] Run full test suite (`npm test`)
+- [x] Run linter (`npx eslint src/`)
+- [x] Verify test coverage meets 80%+
 
 ### Task 6: Update Documentation
 

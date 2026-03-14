@@ -136,7 +136,9 @@ export const Header: React.FC = () => {
                     },
                   }}
                 >
-                  {theme === 'light' ? <DarkModeOutlinedIcon fontSize="medium" /> : <LightModeOutlinedIcon fontSize="medium" />}
+                  {theme === 'light'
+                    ? <DarkModeOutlinedIcon fontSize="medium" />
+                    : <LightModeOutlinedIcon fontSize="medium" />}
                 </IconButton>
               </Tooltip>
               <IconButton
