@@ -112,6 +112,13 @@
     margin-bottom: 4px;
   }
 
+  &__title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
   &__title {
     color: #1d1d1f;
     font-size: 1.75rem;

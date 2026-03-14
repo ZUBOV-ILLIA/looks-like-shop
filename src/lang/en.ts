@@ -53,5 +53,9 @@ export const en: LangType = {
 	"backto": "Back to products",
 	"brand": "Brand",
 	"category": "Category",
-	"stock": "In stock"
+	"stock": "In stock",
+	"wishlist": "Wishlist",
+	"wishlistEmpty": "Your wishlist is empty",
+	"addedToWishlist": "Added to wishlist",
+	"removedFromWishlist": "Removed from wishlist"
 };

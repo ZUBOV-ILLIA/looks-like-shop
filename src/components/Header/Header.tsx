@@ -9,11 +9,13 @@ import {
 import React, { useState } from "react";
 import "./Header.scss";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
 import { BackdropFilter } from "../BackdropFilter/BackdropFilter";
 import { Cart } from "../Cart/Cart";
+import { Wishlist } from "../Wishlist/Wishlist";
 import { categories } from "../../Routes/categories";
 import { langSetter } from "../../utils/langSetter";
 import { setPage } from "../../redux/slices/pageSlice";
@@ -24,7 +26,9 @@ const body = document.body;
 export const Header: React.FC = () => {
   const [categoriesVisible, setCategoriesVisible] = useState(false);
   const basket = useSelector((state: RootState) => state.basket.basket);
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
   const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
 
@@ -115,6 +119,28 @@ export const Header: React.FC = () => {
                 sx={{
                   color: "#1d1d1f",
                   "&:hover": {
+                    color: "#ff3b30",
+                  },
+                }}
+                onClick={() => setWishlistOpen(true)}
+              >
+                <Badge
+                  badgeContent={wishlistItems.length}
+                  sx={{
+                    "& .MuiBadge-badge": {
+                      backgroundColor: "#ff3b30",
+                      color: "#fff",
+                    },
+                  }}
+                >
+                  <FavoriteBorderIcon fontSize="medium" />
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="medium"
+                sx={{
+                  color: "#1d1d1f",
+                  "&:hover": {
                     color: "#0071e3",
                   },
                 }}
@@ -180,6 +206,11 @@ export const Header: React.FC = () => {
       <Cart
         liftingDrawerIsOpen={liftingDrawerIsOpen}
         drawerIsOpen={drawerIsOpen}
+      />
+
+      <Wishlist
+        drawerIsOpen={wishlistOpen}
+        onClose={() => setWishlistOpen(false)}
       />
     </header>
   );

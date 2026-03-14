@@ -1,12 +1,13 @@
 import {
   Alert,
-  Box,
   Button,
+  IconButton,
   Rating,
   Snackbar,
   Typography,
 } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -14,6 +15,7 @@ import { getCommentsFromAPI } from "../../api/getCommentsFromAPI";
 import { getProductsFromAPI } from "../../api/getProductsFromAPI";
 import { PromiseComments } from "../../react-app-env";
 import { addBasketItem } from "../../redux/slices/basketSlice";
+import { toggleWishlistItem } from "../../redux/slices/wishlistSlice";
 import { RootState } from "../../redux/store/store";
 import { Comment } from "../../types/comments";
 import { Product } from "../../types/products";
@@ -29,6 +31,7 @@ export const SingleProduct: React.FC = () => {
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [selectedImage, setSelectedImage] = useState<string>("");
   const { lang } = useSelector((state: RootState) => state.lang);
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
   const dispatch = useDispatch();
 
   const getCommets = useCallback(async () => {
@@ -106,7 +109,29 @@ export const SingleProduct: React.FC = () => {
                   <div className="single-product__brand">{product.brand}</div>
                 )}
 
-                <h1 className="single-product__title">{product.title}</h1>
+                <div className="single-product__title-row">
+                  <h1 className="single-product__title">{product.title}</h1>
+                  <IconButton
+                    onClick={() => dispatch(toggleWishlistItem(product))}
+                    sx={{
+                      color: wishlistItems.some((item) => item.id === product.id)
+                        ? "#ff3b30"
+                        : "#86868b",
+                      flexShrink: 0,
+                      "&:hover": {
+                        color: wishlistItems.some((item) => item.id === product.id)
+                          ? "#ff3b30"
+                          : "#1d1d1f",
+                      },
+                    }}
+                  >
+                    {wishlistItems.some((item) => item.id === product.id) ? (
+                      <Favorite />
+                    ) : (
+                      <FavoriteBorder />
+                    )}
+                  </IconButton>
+                </div>
 
                 <div className="single-product__rating-row">
                   <Rating

@@ -3,6 +3,7 @@ import basketSlice from "../slices/basketSlice";
 import languageSlice from "../slices/languageSlice";
 import pageSlice from "../slices/pageSlice";
 import productsSlice from "../slices/productsSlice";
+import wishlistSlice from "../slices/wishlistSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
 		basket: basketSlice,
 		lang: languageSlice,
 		page: pageSlice,
+		wishlist: wishlistSlice,
 	}
 });
 

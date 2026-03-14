@@ -52,5 +52,9 @@ export const ru: LangType = {
 	"backto": "Назад к товарам",
 	"brand": "Бренд",
 	"category": "Категория",
-	"stock": "В наличии"
+	"stock": "В наличии",
+	"wishlist": "Избранное",
+	"wishlistEmpty": "Список избранного пуст",
+	"addedToWishlist": "Добавлено в избранное",
+	"removedFromWishlist": "Удалено из избранного"
 };
