@@ -5,53 +5,57 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Box,
 } from "@mui/material";
 import React, { useState } from "react";
 import "./Header.scss";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
-import { BackdropFilter } from "../BackdropFilter/BackdropFilter";
 import { Cart } from "../Cart/Cart";
 import { Wishlist } from "../Wishlist/Wishlist";
-import { categories } from "../../Routes/categories";
 import { langSetter } from "../../utils/langSetter";
 import { setPage } from "../../redux/slices/pageSlice";
 import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
-
-const body = document.body;
+import { formatCategoryName } from "../../utils/formatCategoryName";
 
 export const Header: React.FC = () => {
-  const [categoriesVisible, setCategoriesVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const basket = useSelector((state: RootState) => state.basket.basket);
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
+  const categories = useSelector((state: RootState) => state.categories.categories);
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const liftingDrawerIsOpen = (arg: boolean) => {
     setDrawerIsOpen(arg);
   };
 
-  const liftingCategoriesVisible = (arg: boolean) => {
-    setCategoriesVisible(arg);
+  const handleCategoryClick = (slug: string) => {
+    setMenuOpen(false);
+    dispatch(setPage(1));
+    navigate(`/${slug}`);
+  };
 
-    if (arg) {
-      body.classList.add("scroll-off");
-    } else {
-      body.classList.remove("scroll-off");
-    }
+  const handleAllCategories = () => {
+    setMenuOpen(false);
+    navigate("/");
   };
 
   return (
     <header className="header">
-      {categoriesVisible && (
-        <BackdropFilter liftState={liftingCategoriesVisible} />
-      )}
-
       <AppBar
         position="static"
         sx={{
@@ -97,8 +101,9 @@ export const Header: React.FC = () => {
             </Link>
 
             <Button
-              className="header__nav-item"
-              onClick={() => liftingCategoriesVisible(true)}
+              className="header__nav-item header__categories-btn"
+              onClick={() => setMenuOpen(true)}
+              startIcon={<MenuIcon />}
               sx={{
                 color: "#1d1d1f",
                 fontWeight: 500,
@@ -163,43 +168,83 @@ export const Header: React.FC = () => {
         </div>
       </AppBar>
 
-      <div className="container">
-        <nav
-          className={`header__nav ${
-            categoriesVisible ? "header__nav--active" : ""
-          }`}
+      <Drawer
+        anchor="left"
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        PaperProps={{
+          sx: {
+            width: { xs: "85%", sm: 320 },
+            backgroundColor: "#fff",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            p: "16px 20px",
+            borderBottom: "1px solid #e5e5e7",
+          }}
         >
-          {!!categories.length &&
-            categories.map((el: string) => (
-              <Link
-                key={el}
-                className="header__nav-item"
-                to={`/${el}`}
-                style={{ textTransform: "uppercase" }}
-                onClick={() => {
-                  liftingCategoriesVisible(false);
-                  dispatch(setPage(1));
-                }}
-              >
-                {langSetter(el)}
-              </Link>
-            ))}
-          <Link
-            className="header__nav-item"
-            to="/"
-            onClick={() => {
-              liftingCategoriesVisible(false);
-            }}
-            style={{
-              color: "#000",
-              fontWeight: 700,
-              textTransform: "uppercase",
+          <Typography
+            sx={{
+              fontSize: "1.1rem",
+              fontWeight: 600,
+              color: "#1d1d1f",
             }}
           >
-            {langSetter("allcategories")}
-          </Link>
-        </nav>
-      </div>
+            {langSetter("headerCategories")}
+          </Typography>
+          <IconButton onClick={() => setMenuOpen(false)} size="small">
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <List sx={{ pt: 0 }}>
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={handleAllCategories}
+              sx={{
+                py: 1.5,
+                px: 2.5,
+                "&:hover": { backgroundColor: "#f5f5f7" },
+              }}
+            >
+              <ListItemText
+                primary={langSetter("allcategories")}
+                primaryTypographyProps={{
+                  fontWeight: 600,
+                  fontSize: "0.9rem",
+                  color: "#1d1d1f",
+                  textTransform: "capitalize",
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+          {categories.map((slug) => (
+            <ListItem key={slug} disablePadding>
+              <ListItemButton
+                onClick={() => handleCategoryClick(slug)}
+                sx={{
+                  py: 1,
+                  px: 2.5,
+                  "&:hover": { backgroundColor: "#f5f5f7" },
+                }}
+              >
+                <ListItemText
+                  primary={langSetter(slug) || formatCategoryName(slug)}
+                  primaryTypographyProps={{
+                    fontSize: "0.875rem",
+                    color: "#6e6e73",
+                    textTransform: "capitalize",
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
 
       <Typography sx={{ display: "none" }}>{lang}</Typography>
 
