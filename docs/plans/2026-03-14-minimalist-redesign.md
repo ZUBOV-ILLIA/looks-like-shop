@@ -39,13 +39,13 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/components/ProductCard/ProductCard.tsx`
 - Modify: `src/components/ProductCard/ProductCard.scss`
 
-- [ ] Remove gradient card backgrounds, set to white with very subtle border or shadow
-- [ ] Clean up card layout: larger product image, more whitespace, simpler typography
-- [ ] Redesign price display: clean font, discount shown as strikethrough + new price (no gold/neon colors)
-- [ ] Simplify "Add to Cart" button: clean rounded button with single accent color
-- [ ] Improve rating display: smaller, more subtle star rating
-- [ ] Add hover effect: subtle scale or shadow transition instead of colored glow
-- [ ] Update product grid: consistent spacing, 4 columns on desktop, 2 on tablet, 1 on mobile
+- [x] Remove gradient card backgrounds, set to white with very subtle border or shadow
+- [x] Clean up card layout: larger product image, more whitespace, simpler typography
+- [x] Redesign price display: clean font, discount shown as strikethrough + new price (no gold/neon colors)
+- [x] Simplify "Add to Cart" button: clean rounded button with single accent color
+- [x] Improve rating display: smaller, more subtle star rating
+- [x] Add hover effect: subtle scale or shadow transition instead of colored glow
+- [x] Update product grid: consistent spacing, 4 columns on desktop, 2 on tablet, 1 on mobile
 
 ### Task 3: Product Detail Page Improvement
 
