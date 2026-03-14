@@ -29,8 +29,9 @@ export const SocialLinks: React.FC = () => {
           href={link.socLink}
           target="blank"
           style={{
-            color: "#fff",
+            color: "#6e6e73",
             textDecoration: "none",
+            transition: "color 0.2s ease",
           }}
         >
           {link.icon}

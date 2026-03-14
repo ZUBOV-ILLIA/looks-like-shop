@@ -1,2 +1,25 @@
 .lang-selector {
+  .MuiOutlinedInput-root {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #6e6e73;
+    border-radius: 8px;
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #d2d2d7;
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: #86868b;
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #0071e3;
+      border-width: 1px;
+    }
+  }
+
+  .MuiSelect-select {
+    padding: 6px 12px;
+  }
 }
