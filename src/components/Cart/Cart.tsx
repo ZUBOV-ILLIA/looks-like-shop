@@ -1,27 +1,14 @@
 import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardContent,
-  CardMedia,
   Drawer,
   IconButton,
-  Paper,
-  Rating,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography
 } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
-import { Close, DeleteForeverTwoTone } from '@mui/icons-material';
+import { Close, DeleteOutline, ShoppingBagOutlined } from '@mui/icons-material';
 import { addBasketItem, deleteBasketItem, removeBasketItem } from '../../redux/slices/basketSlice';
 import { langSetter } from '../../utils/langSetter';
+import './Cart.scss';
 
 interface CartProps {
   liftingDrawerIsOpen: (arg: boolean) => void,
@@ -32,165 +19,93 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
   const products = useSelector((state: RootState) => state.basket.basket);
   const dispatch = useDispatch();
 
+  const totalPrice = products.reduce((prev, el) => prev + (el.price * el.quantity), 0);
+
   return (
-    <>
-      <Drawer
-        open={drawerIsOpen}
-        anchor="right"
-        onClose={() => liftingDrawerIsOpen(false)}
-      >
-        <div
-          style={{
-            width: '100vw',
-          }}
-        >
-          <div
-            className="container"
-            style={{
-              margin: '70px auto 70px',
-            }}>
-            <IconButton
-              onClick={() => liftingDrawerIsOpen(false)}
-              sx={{
-                boxShadow: '0 0 5px #808080',
-                position: 'absolute',
-                top: '10px',
-                right: '10px',
-              }}
-            >
-              <Close color="secondary" />
-            </IconButton>
-
-            {!!products.length ? (
-              <TableContainer component={Paper}>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>{langSetter("product")}</TableCell>
-                      <TableCell></TableCell>
-                      <TableCell sx={{ textAlign: 'center' }}>{langSetter("price")}</TableCell>
-                      <TableCell></TableCell>
-                    </TableRow>
-                  </TableHead>
-
-                  <TableBody>
-                    {products.map(product => (
-                      <TableRow key={product.id}>
-                        <TableCell>
-                          <Card sx={{ display: 'flex' }}>
-                            <CardMedia
-                              component="img"
-                              height="120px"
-                              image={product.thumbnail}
-                              alt="product image"
-                              sx={{
-                                maxWidth: '120px'
-                              }}
-                            />
-
-                            <CardContent
-                              sx={{
-                                padding: '10px',
-                                "&:last-child": {
-                                  padding: '10px',
-                                }
-                              }}
-                            >
-                              <Typography gutterBottom variant="subtitle2" component="div">
-                                {`${product.title}`}
-                              </Typography>
-                              <Typography gutterBottom variant="subtitle2" component="div" sx={{ color: '#f27a1a' }}>
-                                {`${product.price} $`}
-                              </Typography>
-                              <Rating
-                                name="read-only"
-                                value={product.rating}
-                                precision={0.25}
-                                size="small"
-                                readOnly
-                              />
-                            </CardContent>
-                          </Card>
-                        </TableCell>
-
-                        <TableCell>
-                          <ButtonGroup variant="outlined" aria-label="outlined button group" color="secondary">
-                            <Button
-                              disabled={product.quantity === 1}
-                              onClick={() => {
-                                dispatch(removeBasketItem(product));
-                              }}
-                            >
-                              <Typography variant="h6">
-                                -
-                              </Typography>
-                            </Button>
-                            <Button
-                              sx={{ color: '#000 !important', width: "56px" }}
-                              disabled
-                            >
-                              {product.quantity}
-                            </Button>
-                            <Button
-                              onClick={() => {
-                                dispatch(addBasketItem(product));
-                              }}
-                            >
-                              <Typography variant="h6">
-                                +
-                              </Typography>
-                            </Button>
-                          </ButtonGroup>
-                        </TableCell>
-
-                        <TableCell sx={{ textAlign: 'center' }}>{`${product.price * product.quantity} $`}</TableCell>
-                        <TableCell>
-                          <IconButton
-                            onClick={() => dispatch(deleteBasketItem(product))}
-                            sx={{
-                              boxShadow: '0 0 5px #808080',
-                            }}
-                          >
-                            <DeleteForeverTwoTone color="secondary" />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>{langSetter("fullprice")}</TableCell>
-                      <TableCell></TableCell>
-                      <TableCell>
-                        <Typography sx={{ color: '#f27a1a' }} variant="h6">
-                          {`${products.reduce((prev, el) => prev + (el.price * el.quantity), 0)} $`}
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                </Table>
-                <div
-                  style={{
-                    margin: '10px',
-                    display: 'flex',
-                    flexDirection: 'row-reverse'
-                  }}
-                >
-                  <Button color="secondary" variant="outlined">
-                    {langSetter("confirmcart")}
-                  </Button>
-                </div>
-              </TableContainer>
-            ) : (
-              <Typography variant="h3" sx={{ textAlign: 'center' }}>{langSetter("empty")}</Typography>
-            )}
-
-          </div>
+    <Drawer
+      open={drawerIsOpen}
+      anchor="right"
+      onClose={() => liftingDrawerIsOpen(false)}
+      PaperProps={{
+        sx: { boxShadow: '-4px 0 24px rgba(0, 0, 0, 0.08)' }
+      }}
+    >
+      <div className="cart-drawer">
+        <div className="cart-drawer__header">
+          <h2 className="cart-drawer__title">{langSetter("product")}</h2>
+          <IconButton
+            onClick={() => liftingDrawerIsOpen(false)}
+            size="small"
+            sx={{ color: '#86868b' }}
+          >
+            <Close fontSize="small" />
+          </IconButton>
         </div>
-      </Drawer>
-    </>
+
+        {products.length > 0 ? (
+          <>
+            <div className="cart-drawer__items">
+              {products.map(product => (
+                <div className="cart-drawer__item" key={product.id}>
+                  <img
+                    className="cart-drawer__item-image"
+                    src={product.thumbnail}
+                    alt={product.title}
+                  />
+
+                  <div className="cart-drawer__item-details">
+                    <p className="cart-drawer__item-title">{product.title}</p>
+                    <p className="cart-drawer__item-price">${product.price}</p>
+                    <div className="cart-drawer__quantity">
+                      <button
+                        className="cart-drawer__quantity-btn"
+                        disabled={product.quantity === 1}
+                        onClick={() => dispatch(removeBasketItem(product))}
+                      >
+                        −
+                      </button>
+                      <span className="cart-drawer__quantity-value">{product.quantity}</span>
+                      <button
+                        className="cart-drawer__quantity-btn"
+                        onClick={() => dispatch(addBasketItem(product))}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+
+                  <span className="cart-drawer__item-total">
+                    ${(product.price * product.quantity).toFixed(2)}
+                  </span>
+
+                  <IconButton
+                    className="cart-drawer__delete-btn"
+                    onClick={() => dispatch(deleteBasketItem(product))}
+                    size="small"
+                  >
+                    <DeleteOutline fontSize="small" />
+                  </IconButton>
+                </div>
+              ))}
+            </div>
+
+            <div className="cart-drawer__footer">
+              <div className="cart-drawer__total-row">
+                <span className="cart-drawer__total-label">{langSetter("fullprice")}</span>
+                <span className="cart-drawer__total-price">${totalPrice.toFixed(2)}</span>
+              </div>
+              <button className="cart-drawer__confirm-btn">
+                {langSetter("confirmcart")}
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="cart-drawer__empty">
+            <ShoppingBagOutlined className="cart-drawer__empty-icon" sx={{ fontSize: '3rem' }} />
+            <p className="cart-drawer__empty-text">{langSetter("empty")}</p>
+          </div>
+        )}
+      </div>
+    </Drawer>
   );
 };
