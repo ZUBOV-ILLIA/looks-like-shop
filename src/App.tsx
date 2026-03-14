@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { PageNotFound } from "./components/PageNotFound/PageNotFound";
 import { SingleProduct } from "./components/SingleProduct/SingleProduct";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 import { useDispatch } from "react-redux";
 import { fetchCategories } from "./redux/slices/categoriesSlice";
 import { AppDispatch } from "./redux/store/store";
@@ -20,7 +22,7 @@ export const App: React.FC = () => {
         <Route path="/" element={<Layout />} />
         <Route path="products/:params" element={<SingleProduct />} />
         <Route path=":category" element={<Layout />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<><Header /><PageNotFound /><Footer /></>} />
       </Routes>
     </>
   );
