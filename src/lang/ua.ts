@@ -48,5 +48,9 @@ export const ua: LangType = {
 	"discount": "Скориставшись промокодом, ви отримаєте знижку на цей товар у розмірі:",
 	"lessproducts": "В наявності залишилося менш ніж 50 товарів",
 	"addedinfo": "доданий до кошика",
-	"singlepostcomments": "Коментарі"
+	"singlepostcomments": "Коментарі",
+	"backto": "Назад до товарів",
+	"brand": "Бренд",
+	"category": "Категорія",
+	"stock": "В наявності"
 };

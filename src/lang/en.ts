@@ -49,5 +49,9 @@ export const en: LangType = {
 	"discount": "Using the promo code, you will receive a discount on this product in the amount of:",
 	"lessproducts": "Less than 50 products left in stock",
 	"addedinfo": "added to cart",
-	"singlepostcomments": "Comments"
+	"singlepostcomments": "Comments",
+	"backto": "Back to products",
+	"brand": "Brand",
+	"category": "Category",
+	"stock": "In stock"
 };

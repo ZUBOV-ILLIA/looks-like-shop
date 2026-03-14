@@ -48,5 +48,9 @@ export const ru: LangType = {
 	"discount": "Воспользовавшись промокодом, вы получите скидку на данный товар в размере:",
 	"lessproducts": "В наличии осталось менее 50 товаров",
 	"addedinfo": "добавлен в корзину",
-	"singlepostcomments": "Комментарии"
+	"singlepostcomments": "Комментарии",
+	"backto": "Назад к товарам",
+	"brand": "Бренд",
+	"category": "Категория",
+	"stock": "В наличии"
 };
