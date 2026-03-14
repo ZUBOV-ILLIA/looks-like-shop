@@ -151,5 +151,5 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 
 ### Task 10: Update documentation
 
-- [ ] Update README.md if user-facing changes
-- [ ] Move this plan to `docs/plans/completed/`
+- [x] Update README.md if user-facing changes
+- [x] Move this plan to `docs/plans/completed/`

@@ -1,26 +1,33 @@
-- [LINK TO THE WEB-PAGE](https://zubov-illia.github.io/looks-like-shop/#/)
+# Looks Like Shop
 
-In order to create this project, I have used following technology and approaches:
+[Live Demo](https://zubov-illia.github.io/looks-like-shop/#/)
 
-✅ React
+A minimalist e-commerce storefront with a clean, Apple Store-inspired design. Browse products across dynamically loaded categories, search and filter results, save favorites to your wishlist, and manage your cart — all with full internationalization support (EN/RU/UA).
 
-✅ React-Router
+## Features
 
-✅ Redux Toolkit
+- Minimalist white/light-gray design with clean typography and subtle shadows
+- Dynamic product categories fetched from the DummyJSON API
+- Product search, sorting, and pagination
+- Wishlist with heart toggle and localStorage persistence
+- Shopping cart with slide-out drawer
+- Product detail pages with image gallery and thumbnail selector
+- Responsive layout (desktop, tablet, mobile)
+- Internationalization (English, Russian, Ukrainian)
 
-✅ Typescript
+## Tech Stack
 
-✅ Material UI
+- React 18
+- React-Router
+- Redux Toolkit
+- TypeScript
+- Material UI 5
+- SASS/SCSS
+- DummyJSON REST API
+- ESLint
 
-✅ SASS
-
-✅ REST Api
-
-✅ ESLint
-
-
-You can contact me using these links:
+## Contact
 
 - [Telegram](https://telegram.me/ZubovIllia)
-- [Linkedin](https://www.linkedin.com/in/illia-zubov/)
-- [gMail](zubovillia@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/illia-zubov/)
+- [Email](mailto:zubovillia@gmail.com)
