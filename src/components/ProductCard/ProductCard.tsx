@@ -107,6 +107,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                   >
                     ${product.price}
                   </Typography>
+                  <Typography
+                    variant="caption"
+                    component="span"
+                    className="product-card__price-discount"
+                  >
+                    -{Math.round(product.discountPercentage)}%
+                  </Typography>
                 </>
               ) : (
                 <Typography

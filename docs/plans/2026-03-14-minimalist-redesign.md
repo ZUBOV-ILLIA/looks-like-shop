@@ -120,11 +120,11 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/components/Main/Main.tsx`
 - Modify: `src/components/Main/Main.scss`
 
-- [ ] Redesign search bar: clean rounded input with search icon, no heavy borders
-- [ ] Style sort dropdown and items-per-page selector to match minimalist theme
-- [ ] Group search + sort + items-per-page in a clean toolbar row
-- [ ] Add price range display on product cards for context
-- [ ] Update MUI component color theme from "secondary" (purple) to clean neutral/blue accent
+- [x] Redesign search bar: clean rounded input with search icon, no heavy borders
+- [x] Style sort dropdown and items-per-page selector to match minimalist theme
+- [x] Group search + sort + items-per-page in a clean toolbar row
+- [x] Add price range display on product cards for context
+- [x] Update MUI component color theme from "secondary" (purple) to clean neutral/blue accent
 
 ### Task 8: Final Polish and Consistency
 

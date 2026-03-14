@@ -15,8 +15,31 @@ export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
   return (
     <>
       <FormControl
+        size="small"
         sx={{
-          width: '210px'
+          minWidth: '180px',
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '8px',
+            backgroundColor: '#f5f5f7',
+            fontSize: '0.85rem',
+            '& fieldset': {
+              borderColor: 'transparent',
+            },
+            '&:hover fieldset': {
+              borderColor: '#d2d2d7',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#0071e3',
+              borderWidth: '1.5px',
+            },
+          },
+          '& .MuiInputLabel-root': {
+            fontSize: '0.85rem',
+            color: '#86868b',
+            '&.Mui-focused': {
+              color: '#0071e3',
+            },
+          },
         }}
       >
         <InputLabel>{langSetter("sortby")}</InputLabel>
@@ -25,8 +48,6 @@ export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
           defaultValue={'by rating'}
           label={langSetter("sortby")}
           onChange={(e) => liftingSortBy(e.target.value)}
-          color="secondary"
-
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
         >

@@ -50,6 +50,15 @@
     font-size: 0.85rem;
   }
 
+  &__price-discount {
+    color: #34c759;
+    font-weight: 600;
+    font-size: 0.75rem;
+    background-color: rgba(52, 199, 89, 0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
   &__description {
     color: #6e6e73;
     font-size: 0.8rem;

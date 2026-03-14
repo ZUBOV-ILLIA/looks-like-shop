@@ -20,8 +20,31 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
   return (
     <>
       <FormControl
+        size="small"
         sx={{
-          width: '80px'
+          minWidth: '80px',
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '8px',
+            backgroundColor: '#f5f5f7',
+            fontSize: '0.85rem',
+            '& fieldset': {
+              borderColor: 'transparent',
+            },
+            '&:hover fieldset': {
+              borderColor: '#d2d2d7',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#0071e3',
+              borderWidth: '1.5px',
+            },
+          },
+          '& .MuiInputLabel-root': {
+            fontSize: '0.85rem',
+            color: '#86868b',
+            '&.Mui-focused': {
+              color: '#0071e3',
+            },
+          },
         }}
       >
         <InputLabel>{langSetter("perpage")}</InputLabel>
@@ -32,8 +55,6 @@ export const ItemsPerPageSelector: React.FC<ItemsPerPageSelectorProps> = ({
             liftingItemsPerPage(+e.target.value);
             dispatch(setPage(1));
           }}
-          color="secondary"
-
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
         >
