@@ -1,7 +1,13 @@
+@import '../../styles/breakpoints';
+
 .checkout {
   min-height: calc(100vh - 200px);
   background-color: var(--color-bg-primary);
   padding: 40px 20px;
+
+  @media (max-width: $mobile) {
+    padding: 20px 12px;
+  }
 
   &__container {
     max-width: 640px;
@@ -46,6 +52,11 @@
     position: relative;
     margin-bottom: 40px;
     padding: 0 20px;
+
+    @media (max-width: $mobile) {
+      margin-bottom: 24px;
+      padding: 0 8px;
+    }
   }
 
   &__progress-step {
@@ -69,6 +80,11 @@
     color: var(--color-text-tertiary);
     border: 2px solid var(--color-border-primary);
     transition: all 0.3s ease;
+
+    @media (max-width: $mobile) {
+      width: $touch-target-min;
+      height: $touch-target-min;
+    }
   }
 
   &__progress-step--active &__progress-number {
@@ -88,6 +104,10 @@
     font-weight: 500;
     color: var(--color-text-tertiary);
     white-space: nowrap;
+
+    @media (max-width: $mobile) {
+      font-size: 0.625rem;
+    }
   }
 
   &__progress-step--active &__progress-label {
@@ -101,6 +121,12 @@
     right: 60px;
     height: 2px;
     background-color: var(--color-border-light);
+
+    @media (max-width: $mobile) {
+      top: 22px;
+      left: 40px;
+      right: 40px;
+    }
   }
 
   &__progress-fill {
@@ -115,6 +141,11 @@
     border-radius: 12px;
     padding: 32px;
     border: 1px solid var(--color-border-light);
+
+    @media (max-width: $mobile) {
+      padding: 20px 16px;
+      border-radius: 8px;
+    }
   }
 
   &__step-title {
@@ -122,6 +153,11 @@
     font-weight: 600;
     color: var(--color-text-primary);
     margin: 0 0 24px;
+
+    @media (max-width: $mobile) {
+      font-size: 1.125rem;
+      margin: 0 0 16px;
+    }
   }
 
   &__field {
@@ -134,6 +170,11 @@
 
     .checkout__field {
       flex: 1;
+    }
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      gap: 0;
     }
   }
 
@@ -150,12 +191,13 @@
     padding: 12px 16px;
     border: 1px solid var(--color-border-primary);
     border-radius: 8px;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     font-family: inherit;
     color: var(--color-text-primary);
     background-color: var(--color-bg-surface);
     transition: border-color 0.2s ease;
     box-sizing: border-box;
+    min-height: $touch-target-min;
 
     &:focus {
       outline: none;
@@ -164,6 +206,11 @@
 
     &--error {
       border-color: var(--color-error);
+    }
+
+    @media (max-width: $mobile) {
+      padding: 14px 16px;
+      font-size: 1rem;
     }
   }
 
@@ -179,11 +226,17 @@
     justify-content: space-between;
     gap: 12px;
     margin-top: 24px;
+
+    @media (max-width: $mobile) {
+      flex-direction: column-reverse;
+      gap: 8px;
+    }
   }
 
   &__next-btn,
   &__place-order-btn {
     padding: 14px 32px;
+    min-height: $touch-target-min;
     background-color: var(--color-btn-primary);
     color: var(--color-btn-primary-text);
     border: none;
@@ -198,10 +251,17 @@
     &:hover {
       background-color: var(--color-btn-primary-hover);
     }
+
+    @media (max-width: $mobile) {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__back-btn {
     padding: 14px 32px;
+    min-height: $touch-target-min;
     background-color: transparent;
     color: var(--color-text-secondary);
     border: 1px solid var(--color-border-primary);
@@ -215,6 +275,11 @@
     &:hover {
       border-color: var(--color-text-primary);
       color: var(--color-text-primary);
+    }
+
+    @media (max-width: $mobile) {
+      width: 100%;
+      text-align: center;
     }
   }
 

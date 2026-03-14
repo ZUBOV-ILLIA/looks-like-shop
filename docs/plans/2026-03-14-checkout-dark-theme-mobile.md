@@ -77,16 +77,16 @@ Add a multi-step checkout page (address -> payment -> confirmation) with progres
 - Modify: `src/components/Checkout/Checkout.scss`
 - Modify: `src/styles/global.scss`
 
-- [ ] Header: improve mobile layout - sticky header, compact spacing, better touch targets (min 44px), hamburger menu behavior
-- [ ] ProductCard: optimize card layout for small screens - better image sizing, readable text, accessible buttons
-- [ ] SingleProduct: improve product detail page on mobile - full-width images, stacked layout, better spacing
-- [ ] Cart drawer: full-screen on mobile with better item layout and larger controls
-- [ ] Checkout: ensure checkout steps are fully mobile-friendly with large inputs and buttons
-- [ ] Footer: stack footer columns vertically on mobile
-- [ ] Add consistent breakpoint variables in global.scss ($mobile: 480px, $tablet: 768px, $desktop: 1024px)
-- [ ] Ensure all interactive elements have minimum 44px touch targets on mobile
-- [ ] Write visual regression tests or snapshot tests for mobile layouts
-- [ ] Run project test suite - must pass before task 4
+- [x] Header: improve mobile layout - sticky header, compact spacing, better touch targets (min 44px), hamburger menu behavior
+- [x] ProductCard: optimize card layout for small screens - better image sizing, readable text, accessible buttons
+- [x] SingleProduct: improve product detail page on mobile - full-width images, stacked layout, better spacing
+- [x] Cart drawer: full-screen on mobile with better item layout and larger controls
+- [x] Checkout: ensure checkout steps are fully mobile-friendly with large inputs and buttons
+- [x] Footer: stack footer columns vertically on mobile
+- [x] Add consistent breakpoint variables in global.scss ($mobile: 480px, $tablet: 768px, $desktop: 1024px)
+- [x] Ensure all interactive elements have minimum 44px touch targets on mobile
+- [x] Write visual regression tests or snapshot tests for mobile layouts
+- [x] Run project test suite - must pass before task 4
 
 ### Task 4: Additional Improvements
 
