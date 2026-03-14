@@ -53,12 +53,12 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/components/SingleProduct/SingleProduct.tsx`
 - Modify: `src/components/SingleProduct/SingleProduct.scss` (create if not exists)
 
-- [ ] Redesign layout: large image gallery on left, product info on right (standard e-commerce layout)
-- [ ] Add image thumbnail selector for browsing product images
-- [ ] Clean typography for title, price, description, brand, stock info
-- [ ] Improve comments/reviews section styling
-- [ ] Add "Back to products" navigation link
-- [ ] Consistent button styling with rest of app
+- [x] Redesign layout: large image gallery on left, product info on right (standard e-commerce layout)
+- [x] Add image thumbnail selector for browsing product images
+- [x] Clean typography for title, price, description, brand, stock info
+- [x] Improve comments/reviews section styling
+- [x] Add "Back to products" navigation link
+- [x] Consistent button styling with rest of app
 
 ### Task 4: Cart Drawer Redesign
 

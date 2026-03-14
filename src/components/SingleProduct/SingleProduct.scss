@@ -1,0 +1,273 @@
+.single-product {
+  padding: 40px 0 60px;
+
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #6e6e73;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #1d1d1f;
+    }
+  }
+
+  &__layout {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  &__gallery {
+    flex: 1;
+    min-width: 0;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__main-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 12px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      padding: 24px;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  &__thumb {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+
+    &--active {
+      border-color: #1d1d1f;
+    }
+
+    &:hover {
+      border-color: #86868b;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__brand {
+    color: #6e6e73;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    color: #1d1d1f;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 12px;
+  }
+
+  &__rating-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__comments-count {
+    color: #6e6e73;
+    font-size: 0.85rem;
+  }
+
+  &__price-section {
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  &__price-current {
+    color: #1d1d1f;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__price-original {
+    color: #86868b;
+    font-size: 1rem;
+    text-decoration: line-through;
+  }
+
+  &__discount-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 10px;
+    background-color: #f5f5f7;
+    border-radius: 6px;
+    color: #1d1d1f;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  &__stock-warning {
+    color: #de3730;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 20px 0;
+  }
+
+  &__add-btn {
+    background-color: #1d1d1f !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    text-transform: none !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    padding: 12px 24px !important;
+    transition: background-color 0.2s ease !important;
+
+    &:hover {
+      background-color: #333336 !important;
+    }
+  }
+
+  &__description {
+    color: #1d1d1f;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  &__detail-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 0.875rem;
+  }
+
+  &__detail-label {
+    color: #86868b;
+    font-weight: 500;
+  }
+
+  &__detail-value {
+    color: #1d1d1f;
+  }
+
+  // Comments/Reviews section
+  &__reviews {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  &__reviews-title {
+    color: #1d1d1f;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  &__review {
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  &__review-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f5f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6e6e73;
+  }
+
+  &__review-username {
+    color: #1d1d1f;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  &__review-body {
+    color: #6e6e73;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-left: 48px;
+  }
+}
