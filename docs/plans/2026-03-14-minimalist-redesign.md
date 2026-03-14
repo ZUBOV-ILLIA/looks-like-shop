@@ -25,13 +25,13 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/components/Header/Header.scss`
 - Modify: `src/components/Footer/Footer.scss`
 
-- [ ] Replace gradient body background (#bddeff -> #e7d2fc) with clean white/light gray (#fafafa or #fff)
-- [ ] Set base font to system font stack or clean sans-serif (Inter/SF Pro style via system fonts)
-- [ ] Update text colors to proper hierarchy: #1d1d1f (primary), #6e6e73 (secondary), #86868b (tertiary) - Apple-inspired palette
-- [ ] Redesign Header: white background, subtle bottom border, clean logo without neon glow/text-stroke effects
-- [ ] Redesign Footer: light background instead of black, minimal content, clean layout
-- [ ] Set accent color to a single clean tone (e.g., #0071e3 blue or #1d1d1f black for buttons)
-- [ ] Remove all box-shadow glow effects, replace with subtle shadows (0 1px 3px rgba(0,0,0,0.08))
+- [x] Replace gradient body background (#bddeff -> #e7d2fc) with clean white/light gray (#fafafa or #fff)
+- [x] Set base font to system font stack or clean sans-serif (Inter/SF Pro style via system fonts)
+- [x] Update text colors to proper hierarchy: #1d1d1f (primary), #6e6e73 (secondary), #86868b (tertiary) - Apple-inspired palette
+- [x] Redesign Header: white background, subtle bottom border, clean logo without neon glow/text-stroke effects
+- [x] Redesign Footer: light background instead of black, minimal content, clean layout
+- [x] Set accent color to a single clean tone (e.g., #0071e3 blue or #1d1d1f black for buttons)
+- [x] Remove all box-shadow glow effects, replace with subtle shadows (0 1px 3px rgba(0,0,0,0.08))
 
 ### Task 2: Product Card Redesign
 

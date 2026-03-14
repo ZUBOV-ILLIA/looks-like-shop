@@ -7,9 +7,12 @@ body {
   margin: 0;
   min-height: calc(100vh - 10px);
   position: relative;
-  font-family: sans-serif;
-  background-color: #bddeff;
-  background-image: linear-gradient(71deg, #bddeff 0%, #e7d2fc 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fafafa;
+  background-image: none;
+  color: #1d1d1f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {

@@ -14,28 +14,24 @@ export const Footer: React.FC = () => {
       <div className="footer__wrapper">
         <Typography
           className="footer__title"
-          // sx={{ width: "30%" }}
           textAlign="center"
-          color="#ff9b07"
+          color="#1d1d1f"
           variant="h6"
+          sx={{ fontWeight: 600 }}
         >
-          MUI-SHOP
+          Mui-Shop
         </Typography>
 
-        <Box
-          className="footer__aboutme"
-          // sx={{ width: "30%" }}
-        >
-          <Typography color="#ff9b07" variant="body1">
+        <Box className="footer__aboutme">
+          <Typography color="#6e6e73" variant="body2">
             {langSetter("footeraboutme")}
           </Typography>
         </Box>
 
         <Typography
           className="footer__technologys"
-          // sx={{ width: "30%" }}
-          color="#ff9b07"
-          variant="body1"
+          color="#6e6e73"
+          variant="body2"
         >
           {langSetter("footertechnologys")}
           <strong>
