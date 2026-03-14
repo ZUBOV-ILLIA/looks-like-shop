@@ -2,19 +2,19 @@
   .MuiOutlinedInput-root {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #6e6e73;
+    color: var(--color-text-secondary);
     border-radius: 8px;
 
     .MuiOutlinedInput-notchedOutline {
-      border-color: #d2d2d7;
+      border-color: var(--color-border-primary);
     }
 
     &:hover .MuiOutlinedInput-notchedOutline {
-      border-color: #86868b;
+      border-color: var(--color-text-tertiary);
     }
 
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border-color: #0071e3;
+      border-color: var(--color-accent-blue);
       border-width: 1px;
     }
   }

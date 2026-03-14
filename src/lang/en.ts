@@ -64,5 +64,6 @@ export const en: LangType = {
 	"wishlist": "Wishlist",
 	"wishlistEmpty": "Your wishlist is empty",
 	"addedToWishlist": "Added to wishlist",
-	"removedFromWishlist": "Removed from wishlist"
+	"removedFromWishlist": "Removed from wishlist",
+	"themeToggle": "Toggle theme"
 };

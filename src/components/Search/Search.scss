@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 0;
-  background-color: #f5f5f7;
+  background-color: var(--color-bg-secondary);
   border-radius: 10px;
   padding: 4px 4px 4px 16px;
   flex: 1;
@@ -10,8 +10,8 @@
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
   &:focus-within {
-    background-color: #fff;
-    box-shadow: 0 0 0 2px #0071e3;
+    background-color: var(--color-search-focus-bg);
+    box-shadow: 0 0 0 2px var(--color-accent-blue);
   }
 
   .search-input {
@@ -19,7 +19,7 @@
 
     .MuiInputBase-root {
       font-size: 0.9rem;
-      color: #1d1d1f;
+      color: var(--color-text-primary);
 
       &::before,
       &::after {
@@ -31,7 +31,7 @@
       padding: 8px 0;
 
       &::placeholder {
-        color: #86868b;
+        color: var(--color-text-tertiary);
         opacity: 1;
       }
     }
@@ -42,8 +42,8 @@
   }
 
   .search-btn {
-    background-color: #1d1d1f;
-    color: #fff;
+    background-color: var(--color-btn-primary);
+    color: var(--color-btn-primary-text);
     border-radius: 8px;
     text-transform: none;
     font-weight: 500;
@@ -53,13 +53,13 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #333336;
+      background-color: var(--color-btn-primary-hover);
     }
   }
 }
 
 .search-icon {
-  color: #86868b;
+  color: var(--color-text-tertiary);
   font-size: 1.2rem;
   margin-right: 8px;
 }

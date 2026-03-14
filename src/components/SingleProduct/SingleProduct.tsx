@@ -117,13 +117,13 @@ export const SingleProduct: React.FC = () => {
                     onClick={() => dispatch(toggleWishlistItem(product))}
                     sx={{
                       color: wishlistItems.some((item) => item.id === product.id)
-                        ? "#ff3b30"
-                        : "#86868b",
+                        ? "var(--color-accent-red)"
+                        : "var(--color-text-tertiary)",
                       flexShrink: 0,
                       "&:hover": {
                         color: wishlistItems.some((item) => item.id === product.id)
-                          ? "#ff3b30"
-                          : "#1d1d1f",
+                          ? "var(--color-accent-red)"
+                          : "var(--color-text-primary)",
                       },
                     }}
                   >

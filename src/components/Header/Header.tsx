@@ -11,6 +11,7 @@ import {
   ListItemButton,
   ListItemText,
   Box,
+  Tooltip,
 } from "@mui/material";
 import React, { useState } from "react";
 import "./Header.scss";
@@ -18,6 +19,8 @@ import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
@@ -27,6 +30,7 @@ import { langSetter } from "../../utils/langSetter";
 import { setPage } from "../../redux/slices/pageSlice";
 import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
 import { formatCategoryName } from "../../utils/formatCategoryName";
+import { toggleTheme } from "../../redux/slices/themeSlice";
 
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,6 +40,7 @@ export const Header: React.FC = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const { lang } = useSelector((state: RootState) => state.lang);
+  const theme = useSelector((state: RootState) => state.theme.theme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -59,9 +64,9 @@ export const Header: React.FC = () => {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#fff",
-          color: "#1d1d1f",
-          boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+          backgroundColor: "var(--color-bg-surface)",
+          color: "var(--color-text-primary)",
+          boxShadow: "0 1px 3px var(--color-shadow)",
         }}
       >
         <div className="container">
@@ -86,13 +91,13 @@ export const Header: React.FC = () => {
                   fontFamily: "-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif",
                   fontSize: "1.5rem",
                   fontWeight: 700,
-                  color: "#1d1d1f",
+                  color: "var(--color-text-primary)",
                   textTransform: "none",
                   letterSpacing: "-0.02em",
                   cursor: "pointer",
                   transition: "0.2s ease",
                   "&:hover": {
-                    color: "#0071e3",
+                    color: "var(--color-accent-blue)",
                   },
                 }}
               >
@@ -105,11 +110,11 @@ export const Header: React.FC = () => {
               onClick={() => setMenuOpen(true)}
               startIcon={<MenuIcon />}
               sx={{
-                color: "#1d1d1f",
+                color: "var(--color-text-primary)",
                 fontWeight: 500,
                 textTransform: "none",
                 "&:hover": {
-                  color: "#0071e3",
+                  color: "var(--color-accent-blue)",
                   backgroundColor: "transparent",
                 },
               }}
@@ -119,12 +124,27 @@ export const Header: React.FC = () => {
 
             <div className="header__nav-container">
               <LanguageSelector />
+              <Tooltip title={langSetter("themeToggle")} arrow>
+                <IconButton
+                  size="medium"
+                  onClick={() => dispatch(toggleTheme())}
+                  aria-label={langSetter("themeToggle")}
+                  sx={{
+                    color: "var(--color-text-primary)",
+                    "&:hover": {
+                      color: "var(--color-accent-blue)",
+                    },
+                  }}
+                >
+                  {theme === 'light' ? <DarkModeOutlinedIcon fontSize="medium" /> : <LightModeOutlinedIcon fontSize="medium" />}
+                </IconButton>
+              </Tooltip>
               <IconButton
                 size="medium"
                 sx={{
-                  color: "#1d1d1f",
+                  color: "var(--color-text-primary)",
                   "&:hover": {
-                    color: "#ff3b30",
+                    color: "var(--color-accent-red)",
                   },
                 }}
                 onClick={() => setWishlistOpen(true)}
@@ -133,7 +153,7 @@ export const Header: React.FC = () => {
                   badgeContent={wishlistItems.length}
                   sx={{
                     "& .MuiBadge-badge": {
-                      backgroundColor: "#ff3b30",
+                      backgroundColor: "var(--color-accent-red)",
                       color: "#fff",
                     },
                   }}
@@ -144,9 +164,9 @@ export const Header: React.FC = () => {
               <IconButton
                 size="medium"
                 sx={{
-                  color: "#1d1d1f",
+                  color: "var(--color-text-primary)",
                   "&:hover": {
-                    color: "#0071e3",
+                    color: "var(--color-accent-blue)",
                   },
                 }}
                 onClick={() => setDrawerIsOpen(true)}
@@ -155,7 +175,7 @@ export const Header: React.FC = () => {
                   badgeContent={basket.length}
                   sx={{
                     "& .MuiBadge-badge": {
-                      backgroundColor: "#0071e3",
+                      backgroundColor: "var(--color-accent-blue)",
                       color: "#fff",
                     },
                   }}
@@ -175,7 +195,7 @@ export const Header: React.FC = () => {
         PaperProps={{
           sx: {
             width: { xs: "85%", sm: 320 },
-            backgroundColor: "#fff",
+            backgroundColor: "var(--color-bg-surface)",
           },
         }}
       >
@@ -185,19 +205,19 @@ export const Header: React.FC = () => {
             alignItems: "center",
             justifyContent: "space-between",
             p: "16px 20px",
-            borderBottom: "1px solid #e5e5e7",
+            borderBottom: "1px solid var(--color-border-light)",
           }}
         >
           <Typography
             sx={{
               fontSize: "1.1rem",
               fontWeight: 600,
-              color: "#1d1d1f",
+              color: "var(--color-text-primary)",
             }}
           >
             {langSetter("headerCategories")}
           </Typography>
-          <IconButton onClick={() => setMenuOpen(false)} size="small">
+          <IconButton onClick={() => setMenuOpen(false)} size="small" sx={{ color: "var(--color-text-tertiary)" }}>
             <CloseIcon />
           </IconButton>
         </Box>
@@ -208,7 +228,7 @@ export const Header: React.FC = () => {
               sx={{
                 py: 1.5,
                 px: 2.5,
-                "&:hover": { backgroundColor: "#f5f5f7" },
+                "&:hover": { backgroundColor: "var(--color-bg-secondary)" },
               }}
             >
               <ListItemText
@@ -216,7 +236,7 @@ export const Header: React.FC = () => {
                 primaryTypographyProps={{
                   fontWeight: 600,
                   fontSize: "0.9rem",
-                  color: "#1d1d1f",
+                  color: "var(--color-text-primary)",
                   textTransform: "capitalize",
                 }}
               />
@@ -229,14 +249,14 @@ export const Header: React.FC = () => {
                 sx={{
                   py: 1,
                   px: 2.5,
-                  "&:hover": { backgroundColor: "#f5f5f7" },
+                  "&:hover": { backgroundColor: "var(--color-bg-secondary)" },
                 }}
               >
                 <ListItemText
                   primary={langSetter(slug) || formatCategoryName(slug)}
                   primaryTypographyProps={{
                     fontSize: "0.875rem",
-                    color: "#6e6e73",
+                    color: "var(--color-text-secondary)",
                     textTransform: "capitalize",
                   }}
                 />

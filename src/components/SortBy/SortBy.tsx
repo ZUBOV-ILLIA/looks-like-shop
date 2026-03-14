@@ -20,24 +20,24 @@ export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
           minWidth: '180px',
           '& .MuiOutlinedInput-root': {
             borderRadius: '8px',
-            backgroundColor: '#f5f5f7',
+            backgroundColor: 'var(--color-bg-secondary)',
             fontSize: '0.85rem',
             '& fieldset': {
               borderColor: 'transparent',
             },
             '&:hover fieldset': {
-              borderColor: '#d2d2d7',
+              borderColor: 'var(--color-border-primary)',
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#0071e3',
+              borderColor: 'var(--color-accent-blue)',
               borderWidth: '1.5px',
             },
           },
           '& .MuiInputLabel-root': {
             fontSize: '0.85rem',
-            color: '#86868b',
+            color: 'var(--color-text-tertiary)',
             '&.Mui-focused': {
-              color: '#0071e3',
+              color: 'var(--color-accent-blue)',
             },
           },
         }}

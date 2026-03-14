@@ -30,7 +30,7 @@ export const SocialLinks: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: "#6e6e73",
+            color: "var(--color-text-secondary)",
             textDecoration: "none",
             transition: "color 0.2s ease",
           }}

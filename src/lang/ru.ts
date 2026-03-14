@@ -64,5 +64,6 @@ export const ru: LangType = {
 	"wishlist": "Избранное",
 	"wishlistEmpty": "Список избранного пуст",
 	"addedToWishlist": "Добавлено в избранное",
-	"removedFromWishlist": "Удалено из избранного"
+	"removedFromWishlist": "Удалено из избранного",
+	"themeToggle": "Переключить тему"
 };
