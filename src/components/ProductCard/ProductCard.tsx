@@ -105,7 +105,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                     component="span"
                     className="product-card__price-original"
                   >
-                    ${product.price}
+                    ${product.price.toFixed(2)}
                   </Typography>
                   <Typography
                     variant="caption"
@@ -121,7 +121,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                   component="span"
                   className="product-card__price-current"
                 >
-                  ${product.price}
+                  ${product.price.toFixed(2)}
                 </Typography>
               )}
             </Box>
