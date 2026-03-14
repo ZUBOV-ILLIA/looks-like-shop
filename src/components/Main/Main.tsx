@@ -55,7 +55,7 @@ export const Main: React.FC = () => {
       let res: PromiseProducts;
 
       if (arg !== "") {
-        search = "/search?q=" + arg;
+        search = "/search?q=" + encodeURIComponent(arg);
         res = await getProductsFromAPI(
           `${search}&limit=${itemsPerPage}&skip=${(page - 1) * itemsPerPage}`
         );
