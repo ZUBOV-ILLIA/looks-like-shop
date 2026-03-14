@@ -1,5 +1,5 @@
 import { Box, Pagination } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./Main.scss";
 import { Product } from "../../types/products";
 import { ProductCard } from "../ProductCard/ProductCard";
@@ -28,6 +28,7 @@ export const Main: React.FC = () => {
   const [activeSearch, setActiveSearch] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
+  const prevPathnameRef = useRef(location.pathname);
 
   const liftingQuery = (arg: string) => {
     setQuery(arg);
@@ -76,12 +77,16 @@ export const Main: React.FC = () => {
   }, [itemsPerPage, page, location.pathname, dispatch]);
 
   useEffect(() => {
-    setActiveSearch("");
-    setQuery("");
-  }, [location.pathname]);
+    const pathnameChanged = prevPathnameRef.current !== location.pathname;
+    prevPathnameRef.current = location.pathname;
 
-  useEffect(() => {
-    getProducts(activeSearch);
+    if (pathnameChanged) {
+      setActiveSearch("");
+      setQuery("");
+      getProducts("");
+    } else {
+      getProducts(activeSearch);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getProducts]);
 
