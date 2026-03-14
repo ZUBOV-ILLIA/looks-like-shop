@@ -64,5 +64,6 @@ export const ua: LangType = {
 	"wishlist": "Обране",
 	"wishlistEmpty": "Список обраного порожній",
 	"addedToWishlist": "Додано до обраного",
-	"removedFromWishlist": "Видалено з обраного"
+	"removedFromWishlist": "Видалено з обраного",
+	"themeToggle": "Перемкнути тему"
 };

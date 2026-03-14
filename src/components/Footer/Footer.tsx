@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
         <Typography
           className="footer__title"
           textAlign="center"
-          color="#1d1d1f"
+          color="var(--color-text-primary)"
           variant="h6"
           sx={{ fontWeight: 600 }}
         >
@@ -23,14 +23,14 @@ export const Footer: React.FC = () => {
         </Typography>
 
         <Box className="footer__aboutme">
-          <Typography color="#6e6e73" variant="body2">
+          <Typography color="var(--color-text-secondary)" variant="body2">
             {langSetter("footeraboutme")}
           </Typography>
         </Box>
 
         <Typography
           className="footer__technologys"
-          color="#6e6e73"
+          color="var(--color-text-secondary)"
           variant="body2"
         >
           {langSetter("footertechnologys")}

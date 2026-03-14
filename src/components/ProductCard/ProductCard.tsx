@@ -48,9 +48,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             size="small"
           >
             {isWishlisted ? (
-              <Favorite sx={{ fontSize: "1.25rem", color: "#ff3b30" }} />
+              <Favorite sx={{ fontSize: "1.25rem", color: "var(--color-accent-red)" }} />
             ) : (
-              <FavoriteBorder sx={{ fontSize: "1.25rem", color: "#86868b" }} />
+              <FavoriteBorder sx={{ fontSize: "1.25rem", color: "var(--color-text-tertiary)" }} />
             )}
           </IconButton>
           <Link

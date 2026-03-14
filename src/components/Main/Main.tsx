@@ -138,17 +138,17 @@ export const Main: React.FC = () => {
             }}
             sx={{
               '& .MuiPaginationItem-root': {
-                color: '#6e6e73',
+                color: 'var(--color-text-secondary)',
                 fontSize: '0.85rem',
                 '&.Mui-selected': {
-                  backgroundColor: '#1d1d1f',
-                  color: '#fff',
+                  backgroundColor: 'var(--color-btn-primary)',
+                  color: 'var(--color-btn-primary-text)',
                   '&:hover': {
-                    backgroundColor: '#333336',
+                    backgroundColor: 'var(--color-btn-primary-hover)',
                   },
                 },
                 '&:hover': {
-                  backgroundColor: '#f5f5f7',
+                  backgroundColor: 'var(--color-bg-secondary)',
                 },
               },
             }}

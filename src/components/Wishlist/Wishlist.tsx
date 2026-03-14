@@ -38,7 +38,7 @@ export const Wishlist: React.FC<WishlistProps> = ({
           <IconButton
             onClick={onClose}
             size="small"
-            sx={{ color: "#86868b" }}
+            sx={{ color: "var(--color-text-tertiary)" }}
           >
             <Close fontSize="small" />
           </IconButton>

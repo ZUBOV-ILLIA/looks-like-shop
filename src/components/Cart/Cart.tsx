@@ -44,7 +44,7 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
           <IconButton
             onClick={() => liftingDrawerIsOpen(false)}
             size="small"
-            sx={{ color: '#86868b' }}
+            sx={{ color: 'var(--color-text-tertiary)' }}
           >
             <Close fontSize="small" />
           </IconButton>

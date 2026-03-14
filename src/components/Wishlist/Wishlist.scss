@@ -4,7 +4,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--color-bg-surface);
 
   @media (max-width: 480px) {
     max-width: 100vw;
@@ -15,13 +15,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 24px;
-    border-bottom: 1px solid #e8e8ed;
+    border-bottom: 1px solid var(--color-border-drawer);
   }
 
   &__title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--color-text-primary);
     margin: 0;
   }
 
@@ -36,7 +36,7 @@
     align-items: center;
     gap: 16px;
     padding: 16px 24px;
-    border-bottom: 1px solid #f5f5f7;
+    border-bottom: 1px solid var(--color-bg-secondary);
     transition: background-color 0.2s ease;
 
     &:last-child {
@@ -44,7 +44,7 @@
     }
 
     &:hover {
-      background-color: #fafafa;
+      background-color: var(--color-bg-hover);
     }
   }
 
@@ -54,7 +54,7 @@
     border-radius: 8px;
     object-fit: cover;
     flex-shrink: 0;
-    background-color: #f5f5f7;
+    background-color: var(--color-bg-secondary);
   }
 
   &__item-details {
@@ -65,7 +65,7 @@
   &__item-title {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #1d1d1f;
+    color: var(--color-text-primary);
     text-decoration: none;
     display: block;
     margin: 0 0 4px;
@@ -74,20 +74,20 @@
     white-space: nowrap;
 
     &:hover {
-      color: #0071e3;
+      color: var(--color-accent-blue);
     }
   }
 
   &__item-price {
     font-size: 0.875rem;
-    color: #6e6e73;
+    color: var(--color-text-secondary);
     margin: 0 0 8px;
   }
 
   &__add-cart-btn {
     padding: 6px 14px;
-    background-color: #1d1d1f;
-    color: #fff;
+    background-color: var(--color-btn-primary);
+    color: var(--color-btn-primary-text);
     border: none;
     border-radius: 6px;
     font-size: 0.75rem;
@@ -97,17 +97,17 @@
     font-family: inherit;
 
     &:hover {
-      background-color: #333;
+      background-color: var(--color-btn-primary-hover);
     }
   }
 
   &__delete-btn {
-    color: #86868b;
+    color: var(--color-text-tertiary);
     padding: 4px;
     transition: color 0.2s ease;
 
     &:hover {
-      color: #ff3b30;
+      color: var(--color-accent-red);
       background-color: transparent;
     }
   }
@@ -119,7 +119,7 @@
     align-items: center;
     justify-content: center;
     padding: 60px 24px;
-    color: #86868b;
+    color: var(--color-text-tertiary);
   }
 
   &__empty-icon {
@@ -131,7 +131,7 @@
   &__empty-text {
     font-size: 1.125rem;
     font-weight: 500;
-    color: #6e6e73;
+    color: var(--color-text-secondary);
     margin: 0;
   }
 }

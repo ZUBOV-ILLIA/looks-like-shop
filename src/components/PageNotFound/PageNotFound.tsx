@@ -20,7 +20,7 @@ export const PageNotFound: React.FC = () => {
       <h1
         style={{
           textAlign: 'center',
-          color: '#1d1d1f',
+          color: 'var(--color-text-primary)',
           fontSize: '2rem',
           fontWeight: 600,
           marginBottom: '8px',
@@ -31,7 +31,7 @@ export const PageNotFound: React.FC = () => {
 
       <p
         style={{
-          color: '#6e6e73',
+          color: 'var(--color-text-secondary)',
           fontSize: '1rem',
           marginBottom: '32px',
         }}
@@ -51,14 +51,14 @@ export const PageNotFound: React.FC = () => {
           disableElevation
           sx={{
             textTransform: 'none',
-            backgroundColor: '#1d1d1f',
-            color: '#fff',
+            backgroundColor: 'var(--color-btn-primary)',
+            color: 'var(--color-btn-primary-text)',
             borderRadius: '980px',
             padding: '10px 32px',
             fontSize: '0.9375rem',
             fontWeight: 500,
             '&:hover': {
-              backgroundColor: '#333',
+              backgroundColor: 'var(--color-btn-primary-hover)',
             },
           }}
         >

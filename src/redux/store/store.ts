@@ -4,6 +4,7 @@ import categoriesSlice from "../slices/categoriesSlice";
 import languageSlice from "../slices/languageSlice";
 import pageSlice from "../slices/pageSlice";
 import productsSlice from "../slices/productsSlice";
+import themeSlice from "../slices/themeSlice";
 import wishlistSlice from "../slices/wishlistSlice";
 
 export const store = configureStore({
@@ -14,6 +15,7 @@ export const store = configureStore({
 		page: pageSlice,
 		wishlist: wishlistSlice,
 		categories: categoriesSlice,
+		theme: themeSlice,
 	}
 });
 
