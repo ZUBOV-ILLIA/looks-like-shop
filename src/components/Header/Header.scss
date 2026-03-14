@@ -1,4 +1,10 @@
+@import '../../styles/breakpoints';
+
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+
   &__nav-item {
     display: flex;
     align-items: center;
@@ -14,7 +20,9 @@
   }
 
   &__categories-btn {
-    @media (max-width: 600px) {
+    min-height: $touch-target-min;
+
+    @media (max-width: $mobile) {
       .MuiButton-startIcon {
         margin-right: 0;
       }
@@ -25,16 +33,43 @@
       }
 
       font-size: 0;
-      min-width: 40px;
+      min-width: $touch-target-min;
     }
   }
 
   &__nav-container {
     display: flex;
     align-items: center;
+    gap: 4px;
+
+    @media (max-width: $mobile) {
+      gap: 0;
+    }
   }
 
   .lang-selector {
     margin-right: 16px;
+
+    @media (max-width: $mobile) {
+      margin-right: 4px;
+    }
+  }
+
+  // Ensure all icon buttons meet touch target minimum
+  .MuiIconButton-root {
+    min-width: $touch-target-min;
+    min-height: $touch-target-min;
+  }
+
+  @media (max-width: $tablet) {
+    .MuiToolbar-root {
+      min-height: 56px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .MuiToolbar-root {
+      min-height: 48px;
+    }
   }
 }

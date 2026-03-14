@@ -1,24 +1,36 @@
+@import '../../styles/breakpoints';
+
 .footer {
   padding: 60px 50px;
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
   border-top: 1px solid var(--color-border-primary);
 
+  @media (max-width: $tablet) {
+    padding: 40px 24px;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 32px 16px;
+  }
+
   &__wrapper {
     margin-bottom: 32px;
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       flex-wrap: wrap;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      gap: 24px;
     }
   }
 
   &__title {
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       margin-bottom: 32px !important;
       min-width: 100%;
     }
@@ -27,12 +39,12 @@
   &__aboutme {
     width: 30%;
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       width: 45%;
     }
 
-    @media (max-width: 500px) {
-      margin-bottom: 32px;
+    @media (max-width: $mobile) {
+      margin-bottom: 0;
       width: 100%;
       text-align: center;
     }
@@ -41,11 +53,11 @@
   &__technologys {
     width: 30%;
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       width: 45%;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: $mobile) {
       width: 100%;
       text-align: center;
     }
@@ -54,5 +66,14 @@
   .social-links {
     margin: 0 auto;
     max-width: 300px;
+
+    // Ensure social link icons meet touch target minimum
+    a {
+      min-width: $touch-target-min;
+      min-height: $touch-target-min;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
