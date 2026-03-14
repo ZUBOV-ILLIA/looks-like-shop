@@ -25,6 +25,7 @@ export const Main: React.FC = () => {
   const { page } = useSelector((state: RootState) => state.page);
   const [sortBy, setSortBy] = useState("");
   const [query, setQuery] = useState("");
+  const [activeSearch, setActiveSearch] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -43,6 +44,8 @@ export const Main: React.FC = () => {
   const getProducts = useCallback(async (arg: string) => {
     let queryLocation = "";
     let search = "";
+
+    setActiveSearch(arg);
 
     if (location.pathname !== "/") {
       queryLocation = "/category" + location.pathname;
@@ -73,7 +76,8 @@ export const Main: React.FC = () => {
   }, [itemsPerPage, page, location.pathname, dispatch]);
 
   useEffect(() => {
-    getProducts("");
+    getProducts(activeSearch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getProducts]);
 
   useEffect(() => {
