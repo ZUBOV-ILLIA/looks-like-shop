@@ -134,13 +134,13 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 - Modify: `src/components/LanguageSelector/LanguageSelector.scss`
 - Modify: `src/components/SocialLinks/SocialLinks.tsx`
 
-- [ ] Update 404 page to match new minimalist design
-- [ ] Update backdrop filter overlay to match new theme
-- [ ] Style language selector consistently
-- [ ] Update social links styling
-- [ ] Review all components for any remaining old gradient/neon/glow styles
-- [ ] Verify responsive design works correctly at all breakpoints
-- [ ] Test all existing functionality still works (cart, search, sorting, pagination, i18n, routing)
+- [x] Update 404 page to match new minimalist design
+- [x] Update backdrop filter overlay to match new theme
+- [x] Style language selector consistently
+- [x] Update social links styling
+- [x] Review all components for any remaining old gradient/neon/glow styles
+- [x] Verify responsive design works correctly at all breakpoints
+- [x] Test all existing functionality still works (cart, search, sorting, pagination, i18n, routing)
 
 ### Task 9: Verify acceptance criteria
 
