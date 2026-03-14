@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { PageNotFound } from "./components/PageNotFound/PageNotFound";
 import { SingleProduct } from "./components/SingleProduct/SingleProduct";
+import { Checkout } from "./components/Checkout/Checkout";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +27,7 @@ export const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Layout />} />
         <Route path="products/:params" element={<SingleProduct />} />
+        <Route path="checkout" element={<Checkout />} />
         <Route path=":category" element={<Layout />} />
         <Route path="*" element={<><Header /><PageNotFound /><Footer /></>} />
       </Routes>

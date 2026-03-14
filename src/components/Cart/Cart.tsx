@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../redux/store/store';
 import { Close, DeleteOutline, ShoppingBagOutlined } from '@mui/icons-material';
 import { addBasketItem, deleteBasketItem, removeBasketItem } from '../../redux/slices/basketSlice';
@@ -19,6 +20,7 @@ interface CartProps {
 export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen }) => {
   const products = useSelector((state: RootState) => state.basket.basket);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getDiscountedPrice = (product: Product) => {
     if (product.discountPercentage > 0) {
@@ -102,8 +104,14 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
                 <span className="cart-drawer__total-label">{langSetter("fullprice")}</span>
                 <span className="cart-drawer__total-price">${totalPrice.toFixed(2)}</span>
               </div>
-              <button className="cart-drawer__confirm-btn">
-                {langSetter("confirmcart")}
+              <button
+                className="cart-drawer__confirm-btn"
+                onClick={() => {
+                  liftingDrawerIsOpen(false);
+                  navigate('/checkout');
+                }}
+              >
+                {langSetter("checkoutProceed")}
               </button>
             </div>
           </>
