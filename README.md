@@ -7,12 +7,17 @@ A minimalist e-commerce storefront with a clean, Apple Store-inspired design. Br
 ## Features
 
 - Minimalist white/light-gray design with clean typography and subtle shadows
+- Dark/light theme toggle with CSS custom properties and localStorage persistence
+- Multi-step checkout flow (address, payment, confirmation) with form validation
 - Dynamic product categories fetched from the DummyJSON API
 - Product search, sorting, and pagination
 - Wishlist with heart toggle and localStorage persistence
-- Shopping cart with slide-out drawer
+- Shopping cart with slide-out drawer and localStorage persistence
 - Product detail pages with image gallery and thumbnail selector
-- Responsive layout (desktop, tablet, mobile)
+- Product loading skeletons while data is fetched
+- Lazy-loaded product images for better performance
+- Scroll-to-top button and smooth page transitions
+- Mobile-optimized responsive layout with consistent touch targets (44px minimum)
 - Internationalization (English, Russian, Ukrainian)
 
 ## Tech Stack
