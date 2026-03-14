@@ -14,7 +14,13 @@ export const Layout: React.FC = () => {
   );
 
   if (category && !loading && categories.length > 0 && !categories.includes(category)) {
-    return <PageNotFound />;
+    return (
+      <>
+        <Header />
+        <PageNotFound />
+        <Footer />
+      </>
+    );
   }
 
   return (
