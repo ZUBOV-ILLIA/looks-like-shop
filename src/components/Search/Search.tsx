@@ -1,4 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPage } from "../../redux/slices/pageSlice";
@@ -20,40 +21,37 @@ export const Search: React.FC<SearchProps> = ({
   const { lang } = useSelector((state: RootState) => state.lang);
   const dispatch = useDispatch();
 
+  const handleSearch = () => {
+    if (query.trim()) {
+      getProducts(query);
+      dispatch(setPage(1));
+      liftingQuery("");
+    }
+  };
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: "20px",
-      }}
-    >
+    <Box className="search-bar">
+      <SearchIcon className="search-icon" />
       <TextField
         fullWidth
-        color="secondary"
-        className="search"
-        id="outlined-basic"
-        label={langSetter("search")}
+        className="search-input"
+        placeholder={langSetter("search")}
         variant="standard"
         size="small"
         value={query}
         onChange={(e) => liftingQuery(e.target.value)}
-      />
-
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={() => {
-          if (query.trim()) {
-            getProducts(query);
-            dispatch(setPage(1));
-            // liftingPage();
-            liftingQuery("");
-          }
+        onKeyDown={(e) => {
+          if (e.key === "Enter") handleSearch();
         }}
+      />
+      <Button
+        className="search-btn"
+        variant="contained"
+        disableElevation
+        onClick={handleSearch}
       >
         {langSetter("search")}
       </Button>
-
       <Box display="none">{lang}</Box>
     </Box>
   );

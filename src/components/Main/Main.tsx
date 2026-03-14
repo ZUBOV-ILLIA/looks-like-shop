@@ -92,34 +92,51 @@ export const Main: React.FC = () => {
           margin: "20px auto",
         }}
       >
-        <Search
-          query={query}
-          liftingQuery={liftingQuery}
-          getProducts={getProducts}
-        />
+        <Box className="toolbar">
+          <Search
+            query={query}
+            liftingQuery={liftingQuery}
+            getProducts={getProducts}
+          />
+
+          <Box className="toolbar__controls">
+            <SortBy sortBy={sortBy} liftingSortBy={liftingSortBy} />
+            <ItemsPerPageSelector
+              itemsPerPage={itemsPerPage}
+              liftingItemsPerPage={liftingItemsPerPage}
+            />
+          </Box>
+        </Box>
 
         <Box
           sx={{
-            margin: "20px 0",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            justifyContent: "center",
+            margin: "16px 0",
           }}
         >
-          <SortBy sortBy={sortBy} liftingSortBy={liftingSortBy} />
-
           <Pagination
-            color="secondary"
             count={pages}
             page={page}
             onChange={(_, num) => {
               dispatch(setPage(num));
             }}
-          />
-
-          <ItemsPerPageSelector
-            itemsPerPage={itemsPerPage}
-            liftingItemsPerPage={liftingItemsPerPage}
+            sx={{
+              '& .MuiPaginationItem-root': {
+                color: '#6e6e73',
+                fontSize: '0.85rem',
+                '&.Mui-selected': {
+                  backgroundColor: '#1d1d1f',
+                  color: '#fff',
+                  '&:hover': {
+                    backgroundColor: '#333336',
+                  },
+                },
+                '&:hover': {
+                  backgroundColor: '#f5f5f7',
+                },
+              },
+            }}
           />
         </Box>
 
