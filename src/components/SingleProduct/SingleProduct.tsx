@@ -159,12 +159,12 @@ export const SingleProduct: React.FC = () => {
                           ${discountedPrice}
                         </span>
                         <span className="single-product__price-original">
-                          ${product.price}
+                          ${product.price.toFixed(2)}
                         </span>
                       </>
                     ) : (
                       <span className="single-product__price-current">
-                        ${product.price}
+                        ${product.price.toFixed(2)}
                       </span>
                     )}
                   </div>
