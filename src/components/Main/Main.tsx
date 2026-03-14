@@ -76,6 +76,10 @@ export const Main: React.FC = () => {
   }, [itemsPerPage, page, location.pathname, dispatch]);
 
   useEffect(() => {
+    setActiveSearch("");
+  }, [location.pathname]);
+
+  useEffect(() => {
     getProducts(activeSearch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getProducts]);
