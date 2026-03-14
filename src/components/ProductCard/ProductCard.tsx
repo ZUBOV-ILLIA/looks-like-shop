@@ -28,24 +28,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
 
+  const discountedPrice =
+    product.discountPercentage > 0
+      ? (product.price * (1 - product.discountPercentage / 100)).toFixed(2)
+      : null;
+
   return (
-    <Box
-      className="product-card"
-      sx={{
-        padding: "5px",
-      }}
-    >
-      <Card
-        sx={{
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          backgroundColor: "#e9f0fc",
-          backgroundImage: "linear-gradient(214deg, #e9f0fc 0%, #f7effe 100%)",
-          borderRadius: "12px",
-        }}
-      >
+    <Box className="product-card">
+      <Card className="product-card__inner">
         <Box>
           <Link
             to={"/products/" + product.id}
@@ -53,43 +43,75 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           >
             <CardMedia
               component="img"
-              height="220"
+              height="260"
               image={product.thumbnail}
-              alt="green iguana"
-              sx={{ objectFit: "contain" }}
+              alt={product.title}
+              sx={{ objectFit: "contain", padding: "16px 16px 0" }}
             />
           </Link>
 
-          <CardContent>
+          <CardContent sx={{ padding: "16px 20px 8px" }}>
             <Rating
               name="read-only"
               value={product.rating}
               precision={0.25}
               size="small"
               readOnly
+              sx={{
+                fontSize: "0.875rem",
+                opacity: 0.7,
+              }}
             />
             <Link
               to={"/products/" + product.id}
-              style={{
-                textDecoration: "none",
-              }}
+              style={{ textDecoration: "none" }}
             >
               <Typography
-                padding="10px 0"
-                color="#ff8208"
-                textAlign="left"
-                variant="h6"
+                className="product-card__title"
+                variant="subtitle1"
                 component="h5"
               >
                 {product.title}
               </Typography>
             </Link>
-            <Typography variant="body1">{`Price - ${product.price}$`}</Typography>
-            <Typography variant="subtitle2">{product.description}</Typography>
+            <Box className="product-card__price">
+              {discountedPrice ? (
+                <>
+                  <Typography
+                    variant="body1"
+                    component="span"
+                    className="product-card__price-current"
+                  >
+                    ${discountedPrice}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="span"
+                    className="product-card__price-original"
+                  >
+                    ${product.price}
+                  </Typography>
+                </>
+              ) : (
+                <Typography
+                  variant="body1"
+                  component="span"
+                  className="product-card__price-current"
+                >
+                  ${product.price}
+                </Typography>
+              )}
+            </Box>
+            <Typography
+              variant="body2"
+              className="product-card__description"
+            >
+              {product.description}
+            </Typography>
           </CardContent>
         </Box>
 
-        <CardActions>
+        <CardActions sx={{ padding: "8px 20px 16px" }}>
           <Snackbar
             open={open}
             autoHideDuration={2000}
@@ -102,7 +124,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </Snackbar>
 
           <Button
-            color="secondary"
+            className="product-card__add-btn"
+            variant="contained"
+            disableElevation
+            fullWidth
             onClick={() => {
               dispatch(addBasketItem(product));
               setOpen(true);
