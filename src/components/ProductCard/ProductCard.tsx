@@ -143,7 +143,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             <Alert
               variant="filled"
               severity="success"
-            >{`${product?.title} added to cart`}</Alert>
+            >{`${product.title} ${langSetter("addedinfo")}`}</Alert>
           </Snackbar>
 
           <Button

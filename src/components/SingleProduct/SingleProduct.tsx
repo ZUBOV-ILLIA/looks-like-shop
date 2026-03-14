@@ -39,7 +39,8 @@ export const SingleProduct: React.FC = () => {
       const res: PromiseComments = await getCommentsFromAPI(`/post/${params}`);
       setComments(res.comments);
     } catch (error) {
-      throw new Error(`${error}`);
+      // eslint-disable-next-line no-console
+      console.error("Failed to load comments:", error);
     }
   }, [params]);
 
@@ -49,7 +50,8 @@ export const SingleProduct: React.FC = () => {
       setProduct(res);
       setSelectedImage(res.thumbnail);
     } catch (error) {
-      throw new Error(`${error}`);
+      // eslint-disable-next-line no-console
+      console.error("Failed to load product:", error);
     }
   }, [params]);
 
