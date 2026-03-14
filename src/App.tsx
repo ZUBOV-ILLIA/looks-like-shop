@@ -5,12 +5,13 @@ import { PageNotFound } from "./components/PageNotFound/PageNotFound";
 import { SingleProduct } from "./components/SingleProduct/SingleProduct";
 import { useDispatch } from "react-redux";
 import { fetchCategories } from "./redux/slices/categoriesSlice";
+import { AppDispatch } from "./redux/store/store";
 
 export const App: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchCategories() as any);
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   return (

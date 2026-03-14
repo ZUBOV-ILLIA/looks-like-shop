@@ -27,7 +27,8 @@ export const SocialLinks: React.FC = () => {
         <a
           key={link.socLink}
           href={link.socLink}
-          target="blank"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             color: "#6e6e73",
             textDecoration: "none",

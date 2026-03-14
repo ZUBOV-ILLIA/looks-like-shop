@@ -45,7 +45,6 @@ export const SortBy: React.FC<SortByProps> = ({ sortBy, liftingSortBy}) => {
         <InputLabel>{langSetter("sortby")}</InputLabel>
         <Select
           value={sortBy}
-          defaultValue={'by rating'}
           label={langSetter("sortby")}
           onChange={(e) => liftingSortBy(e.target.value)}
           displayEmpty

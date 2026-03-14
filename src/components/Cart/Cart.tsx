@@ -19,7 +19,14 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
   const products = useSelector((state: RootState) => state.basket.basket);
   const dispatch = useDispatch();
 
-  const totalPrice = products.reduce((prev, el) => prev + (el.price * el.quantity), 0);
+  const getDiscountedPrice = (product: any) => {
+    if (product.discountPercentage > 0) {
+      return product.price * (1 - product.discountPercentage / 100);
+    }
+    return product.price;
+  };
+
+  const totalPrice = products.reduce((prev, el) => prev + (getDiscountedPrice(el) * el.quantity), 0);
 
   return (
     <Drawer
@@ -55,7 +62,7 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
 
                   <div className="cart-drawer__item-details">
                     <p className="cart-drawer__item-title">{product.title}</p>
-                    <p className="cart-drawer__item-price">${product.price}</p>
+                    <p className="cart-drawer__item-price">${getDiscountedPrice(product).toFixed(2)}</p>
                     <div className="cart-drawer__quantity">
                       <button
                         className="cart-drawer__quantity-btn"
@@ -75,7 +82,7 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
                   </div>
 
                   <span className="cart-drawer__item-total">
-                    ${(product.price * product.quantity).toFixed(2)}
+                    ${(getDiscountedPrice(product) * product.quantity).toFixed(2)}
                   </span>
 
                   <IconButton

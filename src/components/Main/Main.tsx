@@ -67,7 +67,8 @@ export const Main: React.FC = () => {
       setPages(Math.ceil(res.total / itemsPerPage));
       dispatch(setProducts(res.products));
     } catch (error) {
-      throw new Error(`${error}`);
+      // eslint-disable-next-line no-console
+      console.error("Failed to load products:", error);
     }
   }, [itemsPerPage, page, location.pathname, dispatch]);
 
