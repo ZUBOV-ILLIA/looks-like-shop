@@ -144,10 +144,10 @@ Complete visual overhaul of the e-commerce app to a minimalist Apple Store-inspi
 
 ### Task 9: Verify acceptance criteria
 
-- [ ] Manual test: browse categories, search products, add to cart, use wishlist, change language
-- [ ] Verify all pages render with new minimalist design (no leftover gradients/glows)
-- [ ] Verify responsive design on mobile, tablet, desktop viewports
-- [ ] Test all existing functionality still works (cart, search, sorting, pagination, i18n, routing)
+- [x] Manual test: browse categories, search products, add to cart, use wishlist, change language
+- [x] Verify all pages render with new minimalist design (no leftover gradients/glows)
+- [x] Verify responsive design on mobile, tablet, desktop viewports
+- [x] Test all existing functionality still works (cart, search, sorting, pagination, i18n, routing)
 
 ### Task 10: Update documentation
 
