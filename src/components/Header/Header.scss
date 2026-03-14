@@ -2,20 +2,20 @@
   &__nav {
     height: 0;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 0;
     position: absolute;
     left: 0;
-    top: 130px;
+    top: 64px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
     background-color: #fff;
-    box-shadow: 0 5px 10px #808080;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     z-index: 100;
     overflow: hidden;
-    transition: 0.3s linear;
+    transition: 0.3s ease;
 
     &--active {
       padding: 20px;
@@ -26,12 +26,14 @@
   &__nav-item {
     display: flex;
     align-items: center;
-    color: #808080;
+    color: #6e6e73;
     text-decoration: none;
-    transition: 0.2s linear;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: 0.2s ease;
 
     &:hover {
-      color: #daba37;
+      color: #1d1d1f;
     }
   }
 

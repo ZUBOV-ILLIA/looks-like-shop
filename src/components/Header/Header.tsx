@@ -48,7 +48,14 @@ export const Header: React.FC = () => {
         <BackdropFilter liftState={liftingCategoriesVisible} />
       )}
 
-      <AppBar position="static" color="secondary">
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#fff",
+          color: "#1d1d1f",
+          boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+        }}
+      >
         <div className="container">
           <Toolbar
             sx={{
@@ -68,17 +75,16 @@ export const Header: React.FC = () => {
               <Typography
                 component="span"
                 sx={{
-                  fontFamily: "'Rubik Mono One', sans-serif",
-                  fontSize: "2rem",
-                  textShadow: "9px 7px 16px #ff02a8, -6px -3px 16px #ff6000",
-                  WebkitTextStroke: "2px #ff9200",
-                  WebkitTextFillColor: "transparent",
-                  textTransform: "uppercase",
-                  transition: "0.3s linear",
+                  fontFamily: "-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif",
+                  fontSize: "1.5rem",
+                  fontWeight: 700,
+                  color: "#1d1d1f",
+                  textTransform: "none",
+                  letterSpacing: "-0.02em",
                   cursor: "pointer",
+                  transition: "0.2s ease",
                   "&:hover": {
-                    textShadow: "9px 7px 16px #2d5de3, -6px -3px 16px #0094ff",
-                    WebkitTextStroke: "2px #69ff00",
+                    color: "#0071e3",
                   },
                 }}
               >
@@ -90,7 +96,13 @@ export const Header: React.FC = () => {
               className="header__nav-item"
               onClick={() => liftingCategoriesVisible(true)}
               sx={{
-                color: "white",
+                color: "#1d1d1f",
+                fontWeight: 500,
+                textTransform: "none",
+                "&:hover": {
+                  color: "#0071e3",
+                  backgroundColor: "transparent",
+                },
               }}
             >
               {langSetter("headerCategories")}
@@ -99,14 +111,24 @@ export const Header: React.FC = () => {
             <div className="header__nav-container">
               <LanguageSelector />
               <IconButton
-                color="inherit"
                 size="medium"
                 sx={{
-                  boxShadow: "0 0 15px #d528f4",
+                  color: "#1d1d1f",
+                  "&:hover": {
+                    color: "#0071e3",
+                  },
                 }}
                 onClick={() => setDrawerIsOpen(true)}
               >
-                <Badge badgeContent={basket.length} color="primary">
+                <Badge
+                  badgeContent={basket.length}
+                  sx={{
+                    "& .MuiBadge-badge": {
+                      backgroundColor: "#0071e3",
+                      color: "#fff",
+                    },
+                  }}
+                >
                   <ShoppingCartTwoToneIcon fontSize="medium" />
                 </Badge>
               </IconButton>
