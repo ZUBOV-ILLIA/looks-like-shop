@@ -77,6 +77,7 @@ export const Main: React.FC = () => {
 
   useEffect(() => {
     setActiveSearch("");
+    setQuery("");
   }, [location.pathname]);
 
   useEffect(() => {
