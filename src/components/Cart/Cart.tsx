@@ -8,6 +8,7 @@ import { RootState } from '../../redux/store/store';
 import { Close, DeleteOutline, ShoppingBagOutlined } from '@mui/icons-material';
 import { addBasketItem, deleteBasketItem, removeBasketItem } from '../../redux/slices/basketSlice';
 import { langSetter } from '../../utils/langSetter';
+import { Product } from '../../types/products';
 import './Cart.scss';
 
 interface CartProps {
@@ -19,7 +20,7 @@ export const Cart: React.FC<CartProps> = ({ liftingDrawerIsOpen, drawerIsOpen })
   const products = useSelector((state: RootState) => state.basket.basket);
   const dispatch = useDispatch();
 
-  const getDiscountedPrice = (product: any) => {
+  const getDiscountedPrice = (product: Product) => {
     if (product.discountPercentage > 0) {
       return product.price * (1 - product.discountPercentage / 100);
     }
